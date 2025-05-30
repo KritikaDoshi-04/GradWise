@@ -5,44 +5,49 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>GradWise Finance - Student Financial Helper</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
   * {
     box-sizing: border-box;
   }
   body {
-    font-family: 'Inter', sans-serif;
-    background: #e0f2f1;
+    font-family: 'Poppins', sans-serif;
+    background: #f7fafc;
     margin: 0;
     padding: 0;
-    color: #004d40;
-    transition: background 0.4s, color 0.4s;
+    color: #334155;
+    transition: background 0.5s ease, color 0.5s ease;
   }
   header {
-    background: linear-gradient(90deg, #00796b, #26a69a);
-    color: #fff;
-    padding: 2.5rem 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #f0f4f8;
+    padding: 2.8rem 1.5rem;
     text-align: center;
-    box-shadow: 0 5px 18px rgba(2, 78, 71, 0.35);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.35);
     position: relative;
-    font-weight: 600;
-    letter-spacing: 0.05em;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
   }
   header h1 {
     margin: 0;
-    font-size: 2.6rem;
+    font-weight: 700;
+    font-size: 2.8rem;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 6px rgba(118, 75, 162, 0.6);
   }
   header p {
-    font-weight: 400;
     font-size: 1.3rem;
-    margin-top: 0.6rem;
-    letter-spacing: 0.04em;
+    margin-top: 0.5rem;
+    font-weight: 500;
+    color: #dcdff4;
+    letter-spacing: 0.03em;
   }
 
   /* Dark mode toggle switch */
   .dark-mode-toggle {
     position: absolute;
-    top: 1.25rem;
-    right: 1.75rem;
+    top: 1.5rem;
+    right: 2rem;
     display: flex;
     align-items: center;
     gap: 0.6em;
@@ -50,8 +55,8 @@
     user-select: none;
     font-weight: 600;
     font-size: 1rem;
-    color: #b2dfdb;
-    text-shadow: 0 1px 2px #004d40aa;
+    color: #f0f4f8;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
   }
   .dark-mode-toggle input[type="checkbox"] {
     height: 0;
@@ -61,11 +66,11 @@
   .toggle-switch {
     width: 48px;
     height: 26px;
-    background: #b2dfdb;
+    background: #e0e7ff;
     border-radius: 30px;
     position: relative;
-    transition: background-color 0.3s ease;
-    box-shadow: inset 0 0 5px #004d40aa;
+    transition: background-color 0.4s ease;
+    box-shadow: inset 0 2px 5px rgba(118, 75, 162, 0.3);
   }
   .toggle-switch::after {
     content: '';
@@ -74,56 +79,59 @@
     left: 3px;
     width: 20px;
     height: 20px;
-    background: #004d40;
+    background: white;
     border-radius: 50%;
-    transition: 0.3s;
-    box-shadow: 0 3px 8px rgba(0,77,64,0.7);
+    transition: left 0.4s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
   }
   input[type="checkbox"]:checked + .toggle-switch {
-    background: #ff7043;
+    background: #9f7aea;
   }
   input[type="checkbox"]:checked + .toggle-switch::after {
     left: calc(100% - 23px);
-    background: #fff3e0;
-    box-shadow: 0 3px 10px rgba(255,112,67,0.8);
-  }
-  .toggle-label {
-    user-select: none;
   }
 
   nav {
-    background: #004d40;
+    background: #ffffff;
     display: flex;
     justify-content: center;
-    box-shadow: 0 3px 12px rgba(0, 77, 64, 0.5);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+    border-radius: 20px;
+    margin: 1.75rem auto 2rem;
+    max-width: 900px;
+    padding: 0 0.5rem;
+    transition: background 0.5s ease;
   }
   nav button {
     background: none;
     border: none;
-    padding: 1rem 2.8rem;
-    font-weight: 600;
+    padding: 1rem 3rem;
+    font-weight: 700;
     font-size: 1.1rem;
     cursor: pointer;
-    color: #80cbc4;
-    border-bottom: 3px solid transparent;
-    border-radius: 6px 6px 0 0;
-    transition: all 0.25s ease;
-    letter-spacing: 0.04em;
+    transition: all 0.35s ease;
+    color: #6b7280;
+    border-bottom: 4px solid transparent;
+    border-radius: 12px 12px 0 0;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.05em;
   }
   nav button:hover,
   nav button.active {
-    background: #004d40cc;
-    color: #ffab91;
-    border-bottom: 3px solid #ff7043;
+    background: #ede9fe;
+    color: #5b21b6;
+    border-bottom: 4px solid #7c3aed;
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
   }
+
   main {
-    max-width: 920px;
-    margin: 3rem auto 4rem;
-    background: #ffffff;
-    padding: 3rem 3.5rem 3.8rem;
-    box-shadow: 0 16px 48px rgba(38, 166, 154, 0.15);
-    border-radius: 20px;
-    transition: background 0.4s, color 0.4s;
+    max-width: 900px;
+    margin: 0 auto 3rem;
+    background: white;
+    padding: 3.5rem 4rem;
+    box-shadow: 0 20px 50px rgba(102, 126, 234, 0.15);
+    border-radius: 28px;
+    transition: background 0.5s ease, color 0.5s ease;
   }
   section {
     display: none;
@@ -133,238 +141,247 @@
     display: block;
   }
   @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(18px); }
+    from { opacity: 0; transform: translateY(16px); }
     to { opacity: 1; transform: translateY(0); }
   }
+
   h2 {
-    color: #00796b;
-    margin-bottom: 1.8rem;
+    color: #5b21b6;
+    margin-bottom: 2rem;
     font-weight: 700;
     font-size: 2rem;
+    letter-spacing: 0.03em;
   }
   label {
     display: block;
-    margin: 16px 0 6px;
+    margin: 18px 0 8px;
     font-weight: 600;
-    color: #004d40cc;
-    letter-spacing: 0.03em;
+    color: #4b5563;
+    letter-spacing: 0.02em;
   }
   input[type=number], input[type=text], input.search-box {
     width: 100%;
-    padding: 15px 18px;
+    padding: 16px 18px;
     font-size: 1.1rem;
     border-radius: 14px;
-    border: 2px solid #a7d8d3;
+    border: 1.8px solid #d1d5db;
     margin-bottom: 1.8rem;
-    background: #e0f2f1;
-    color: #004d40;
-    transition: border-color 0.3s, background 0.3s, color 0.3s;
-    font-weight: 500;
-    letter-spacing: 0.02em;
+    background: #f9fafb;
+    color: #1e293b;
+    transition: border-color 0.3s ease, background 0.3s ease, color 0.3s ease;
+    box-shadow: inset 0 1px 3px #e0e7ff;
   }
   input:focus {
-    border-color: #ff7043;
+    border-color: #7c3aed;
     outline: none;
-    background: #fff3e0;
-    color: #4e342e;
-    font-weight: 600;
+    background: #f3e8ff;
+    color: #4c1d95;
+    box-shadow: 0 0 8px #a78bfaaa;
   }
   button.calc-btn {
-    background: linear-gradient(90deg, #ff7043, #ff5722);
+    background: linear-gradient(90deg, #7c3aed 0%, #9333ea 100%);
     border: none;
     color: white;
     padding: 18px 30px;
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     border-radius: 20px;
     cursor: pointer;
     margin-top: 1.5rem;
-    box-shadow: 0 6px 18px rgba(255, 112, 67, 0.5);
+    box-shadow: 0 8px 20px rgba(124, 58, 237, 0.4);
+    transition: background 0.4s ease, box-shadow 0.4s ease;
     letter-spacing: 0.05em;
-    transition: background 0.3s ease;
     user-select: none;
   }
   button.calc-btn:hover {
-    background: linear-gradient(90deg, #ff5722, #e64a19);
-  }
-  button.calc-btn:active {
-    transform: scale(0.97);
+    background: linear-gradient(90deg, #9333ea 0%, #7c3aed 100%);
+    box-shadow: 0 12px 28px rgba(147, 51, 234, 0.6);
   }
   .result {
     margin-top: 2rem;
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     font-weight: 700;
-    color: #00796b;
-    background: #b2dfdb;
-    padding: 1.6rem 2rem;
-    border-left: 6px solid #ff7043;
-    border-radius: 12px;
-    transition: background 0.4s, color 0.4s;
+    color: #4c1d95;
+    background: #ede9fe;
+    padding: 1.5rem 2rem;
+    border-left: 6px solid #7c3aed;
+    border-radius: 16px;
+    transition: background 0.4s ease, color 0.4s ease;
+    letter-spacing: 0.03em;
   }
   .warning {
-    color: #d84315;
-    background: #ffccbc;
-    border-left-color: #d84315;
+    color: #dc2626;
   }
+
   ul.aid-list {
     list-style: none;
     padding-left: 0;
-    max-height: 320px;
+    max-height: 360px;
     overflow-y: auto;
-    border: 2px solid #a7d8d3;
-    border-radius: 16px;
-    background: #e0f7f5;
-    box-shadow: inset 0 0 10px rgba(38, 166, 154, 0.15);
-    transition: background 0.4s, color 0.4s;
+    border: 1.8px solid #d8b4fe;
+    border-radius: 20px;
+    background: #faf5ff;
+    box-shadow: inset 0 0 12px rgba(124, 58, 237, 0.12);
+    transition: background 0.4s ease, color 0.4s ease;
   }
   ul.aid-list li {
-    padding: 18px 22px;
-    border-bottom: 1.8px solid #b2dfdb;
+    padding: 18px 24px;
+    border-bottom: 1.5px solid #ddd6fe;
     font-weight: 600;
-    color: #004d40cc;
-    letter-spacing: 0.02em;
+    color: #6b21a8;
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
   }
   ul.aid-list li:last-child {
     border-bottom: none;
   }
   ul.aid-list li strong {
-    color: #00796b;
+    color: #7c3aed;
     display: block;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
   .search-box {
-    margin-top: 16px;
-    margin-bottom: 24px;
-    font-style: italic;
+    margin-top: 18px;
+    margin-bottom: 26px;
+    font-weight: 500;
   }
 
-  /* Scholarship link buttons in aid finder */
+  /* Scholarship link buttons */
   .scholarship-links {
     margin-top: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
   }
   .scholarship-links h3 {
-    color: #00796b;
+    color: #5b21b6;
     margin-bottom: 1rem;
-    width: 100%;
     font-weight: 700;
-    letter-spacing: 0.03em;
-    font-size: 1.4rem;
   }
   .scholarship-links button {
-    background: #ff7043;
+    background: #a78bfa;
     border: none;
-    color: white;
+    color: #4c1d95;
     padding: 12px 22px;
+    margin: 6px 10px 6px 0;
     font-weight: 700;
-    border-radius: 24px;
+    border-radius: 16px;
     cursor: pointer;
-    font-size: 1.1rem;
-    box-shadow: 0 5px 15px rgba(255, 112, 67, 0.45);
-    transition: background 0.3s ease;
+    font-size: 1.05rem;
+    box-shadow: 0 6px 18px rgba(167, 139, 250, 0.45);
+    transition: background 0.3s ease, color 0.3s ease;
+    letter-spacing: 0.04em;
     user-select: none;
-    flex: 1 1 140px;
-    white-space: nowrap;
   }
   .scholarship-links button:hover {
-    background: #e64a19;
+    background: #7c3aed;
+    color: white;
+    box-shadow: 0 10px 25px rgba(124, 58, 237, 0.65);
   }
 
   /* Dark mode styles */
   body.dark {
-    background: #00251a;
-    color: #b2dfdb;
+    background: #121123;
+    color: #c0c0e4;
   }
   body.dark header {
-    background: linear-gradient(90deg, #004d40, #00796b);
-    color: #a7d8d3;
-    box-shadow: 0 5px 18px rgba(0, 77, 64, 0.9);
+    background: linear-gradient(135deg, #3b0764 0%, #6a2b8f 100%);
+    color: #dcd6f7;
+    box-shadow: 0 8px 22px rgba(107, 38, 158, 0.7);
   }
-  body.dark .dark-mode-toggle {
-    color: #a7d8d3;
-    text-shadow: 0 1px 3px #004d40aa;
+  body.dark header h1 {
+    text-shadow: 0 2px 8px rgba(107, 38, 158, 0.8);
+  }
+  body.dark header p {
+    color: #ccc8ff;
   }
   body.dark nav {
-    background: #00332e;
+    background: #221c3a;
+    box-shadow: 0 4px 18px rgba(107, 38, 158, 0.7);
   }
   body.dark nav button {
-    color: #80cbc4cc;
+    color: #c4b6ff;
   }
   body.dark nav button:hover,
   body.dark nav button.active {
-    background: #004d40cc;
-    color: #ffab91;
-    border-bottom-color: #ff7043;
+    background: #472e87;
+    color: #dcd6f7;
+    border-bottom-color: #b186ff;
+    box-shadow: 0 4px 12px rgba(177, 134, 255, 0.8);
   }
   body.dark main {
-    background: #004d40;
-    color: #b2dfdb;
-    box-shadow: 0 16px 48px rgba(38, 166, 154, 0.7);
+    background: #1d1635;
+    color: #d6d0f5;
+    box-shadow: 0 20px 50px rgba(107, 38, 158, 0.35);
   }
-  body.dark input[type=number], 
-  body.dark input[type=text], 
+  body.dark input[type=number],
+  body.dark input[type=text],
   body.dark input.search-box {
-    background: #00332e;
-    border-color: #00897b;
-    color: #b2dfdb;
+    background: #292240;
+    border-color: #6e5ca7;
+    color: #ccc8ff;
+    box-shadow: inset 0 1px 3px #5e4fa5;
   }
   body.dark input:focus {
-    background: #004d40;
-    border-color: #ff7043;
-    color: #ffccbc;
+    background: #3b2f68;
+    border-color: #b186ff;
+    color: #f0ecff;
+    box-shadow: 0 0 12px #b186ffaa;
   }
   body.dark button.calc-btn {
-    background: linear-gradient(90deg, #ff7043, #ff5722);
-    box-shadow: 0 6px 18px rgba(255, 112, 67, 0.7);
+    background: linear-gradient(90deg, #b186ff 0%, #7c3aed 100%);
+    box-shadow: 0 8px 22px rgba(177, 134, 255, 0.55);
+  }
+  body.dark button.calc-btn:hover {
+    background: linear-gradient(90deg, #7c3aed 0%, #b186ff 100%);
+    box-shadow: 0 12px 28px rgba(124, 58, 237, 0.85);
   }
   body.dark .result {
-    background: #00796b;
-    color: #ffe9dc;
-    border-left-color: #ff7043;
-  }
-  body.dark .warning {
-    color: #ffab91;
-    background: #bf360c;
-    border-left-color: #ff7043;
+    background: #3b2f68;
+    color: #bdb9ff;
+    border-left-color: #b186ff;
   }
   body.dark ul.aid-list {
-    background: #004d40;
-    border-color: #00897b;
-    color: #b2dfdb;
-    box-shadow: inset 0 0 15px rgba(38, 166, 154, 0.5);
+    background: #2f254e;
+    border-color: #7c57ff;
+    box-shadow: inset 0 0 18px rgba(124, 87, 255, 0.2);
   }
   body.dark ul.aid-list li {
-    border-bottom-color: #00897b;
-    color: #a7d8d3;
+    color: #bdb9ff;
+    border-bottom-color: #584ca8;
   }
   body.dark ul.aid-list li strong {
-    color: #ffab91;
+    color: #b186ff;
   }
   body.dark .scholarship-links {
-    gap: 18px;
+    color: #bdb9ff;
+  }
+  body.dark .scholarship-links h3 {
+    color: #b186ff;
   }
   body.dark .scholarship-links button {
-    background: #ff7043;
-    box-shadow: 0 6px 20px rgba(255, 112, 67, 0.9);
+    background: #6b54be;
+    color: #dcd6f7;
+    box-shadow: 0 6px 18px rgba(107, 84, 190, 0.7);
   }
   body.dark .scholarship-links button:hover {
-    background: #e64a19;
+    background: #8f72ff;
+    color: #3b2168;
+    box-shadow: 0 10px 25px rgba(143, 114, 255, 0.9);
   }
 
-  /* Responsive tweaks */
-  @media (max-width: 680px) {
-    nav button {
-      padding: 1rem 1.4rem;
-      font-size: 1rem;
-    }
-    main {
-      margin: 2rem 1rem 3rem;
-      padding: 2rem 1.8rem 2.5rem;
-      border-radius: 16px;
-    }
+  /* Scrollbar styling for aid list */
+  ul.aid-list::-webkit-scrollbar {
+    width: 9px;
   }
+  ul.aid-list::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ul.aid-list::-webkit-scrollbar-thumb {
+    background: #7c3aed99;
+    border-radius: 12px;
+  }
+  body.dark ul.aid-list::-webkit-scrollbar-thumb {
+    background: #b186ffcc;
+  }
+
 </style>
 </head>
 <body>
