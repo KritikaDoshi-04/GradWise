@@ -5,47 +5,53 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>GradWise Finance - Student Financial Helper</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
   * {
     box-sizing: border-box;
   }
   body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to bottom right, #f0f4fb, #d9e4f8);
+    font-family: 'Inter', sans-serif;
+    background: #e0f2f1;
     margin: 0;
     padding: 0;
-    color: #3a3a3a;
+    color: #004d40;
     transition: background 0.4s, color 0.4s;
   }
   header {
-    background: linear-gradient(to right, #7aa9f7, #a6c1ff);
-    color: white;
-    padding: 2rem 1rem;
+    background: linear-gradient(90deg, #00796b, #26a69a);
+    color: #fff;
+    padding: 2.5rem 1.5rem;
     text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 5px 18px rgba(2, 78, 71, 0.35);
     position: relative;
+    font-weight: 600;
+    letter-spacing: 0.05em;
   }
   header h1 {
     margin: 0;
-    font-weight: 600;
-    font-size: 2.2rem;
+    font-size: 2.6rem;
   }
   header p {
-    font-size: 1.2rem;
-    margin-top: 0.5rem;
     font-weight: 400;
+    font-size: 1.3rem;
+    margin-top: 0.6rem;
+    letter-spacing: 0.04em;
   }
 
   /* Dark mode toggle switch */
   .dark-mode-toggle {
     position: absolute;
-    top: 1.2rem;
-    right: 1.5rem;
+    top: 1.25rem;
+    right: 1.75rem;
     display: flex;
     align-items: center;
-    gap: 0.5em;
+    gap: 0.6em;
     cursor: pointer;
     user-select: none;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #b2dfdb;
+    text-shadow: 0 1px 2px #004d40aa;
   }
   .dark-mode-toggle input[type="checkbox"] {
     height: 0;
@@ -53,474 +59,510 @@
     visibility: hidden;
   }
   .toggle-switch {
-    width: 46px;
-    height: 24px;
-    background: #d0d9ff;
+    width: 48px;
+    height: 26px;
+    background: #b2dfdb;
     border-radius: 30px;
     position: relative;
     transition: background-color 0.3s ease;
+    box-shadow: inset 0 0 5px #004d40aa;
   }
   .toggle-switch::after {
     content: '';
     position: absolute;
-    top: 2px;
-    left: 2px;
+    top: 3px;
+    left: 3px;
     width: 20px;
     height: 20px;
-    background: white;
+    background: #004d40;
     border-radius: 50%;
     transition: 0.3s;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    box-shadow: 0 3px 8px rgba(0,77,64,0.7);
   }
   input[type="checkbox"]:checked + .toggle-switch {
-    background: #5a81f7;
+    background: #ff7043;
   }
   input[type="checkbox"]:checked + .toggle-switch::after {
-    left: calc(100% - 22px);
+    left: calc(100% - 23px);
+    background: #fff3e0;
+    box-shadow: 0 3px 10px rgba(255,112,67,0.8);
   }
   .toggle-label {
-    font-weight: 600;
-    color: white;
-    font-size: 0.95rem;
     user-select: none;
   }
 
   nav {
-    background: white;
+    background: #004d40;
     display: flex;
     justify-content: center;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
-    transition: background 0.4s;
+    box-shadow: 0 3px 12px rgba(0, 77, 64, 0.5);
   }
   nav button {
     background: none;
     border: none;
-    padding: 1rem 2.5rem;
+    padding: 1rem 2.8rem;
     font-weight: 600;
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     cursor: pointer;
-    transition: all 0.3s ease;
-    color: #7a9cfb;
+    color: #80cbc4;
     border-bottom: 3px solid transparent;
     border-radius: 6px 6px 0 0;
+    transition: all 0.25s ease;
+    letter-spacing: 0.04em;
   }
   nav button:hover,
   nav button.active {
-    background: #e7eeff;
-    color: #4b6edc;
-    border-bottom: 3px solid #4b6edc;
+    background: #004d40cc;
+    color: #ffab91;
+    border-bottom: 3px solid #ff7043;
   }
   main {
-    max-width: 900px;
-    margin: 2.5rem auto;
-    background: white;
-    padding: 3rem 3.5rem;
-    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.06);
-    border-radius: 16px;
+    max-width: 920px;
+    margin: 3rem auto 4rem;
+    background: #ffffff;
+    padding: 3rem 3.5rem 3.8rem;
+    box-shadow: 0 16px 48px rgba(38, 166, 154, 0.15);
+    border-radius: 20px;
     transition: background 0.4s, color 0.4s;
   }
   section {
     display: none;
-    animation: fadeIn 0.4s ease;
+    animation: fadeInUp 0.5s ease forwards;
   }
   section.active {
     display: block;
   }
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(12px); }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(18px); }
     to { opacity: 1; transform: translateY(0); }
   }
   h2 {
-    color: #4b6edc;
+    color: #00796b;
     margin-bottom: 1.8rem;
+    font-weight: 700;
+    font-size: 2rem;
   }
   label {
     display: block;
-    margin: 14px 0 6px;
+    margin: 16px 0 6px;
     font-weight: 600;
-    color: #506680;
+    color: #004d40cc;
+    letter-spacing: 0.03em;
   }
   input[type=number], input[type=text], input.search-box {
     width: 100%;
-    padding: 14px 16px;
-    font-size: 1.05rem;
-    border-radius: 10px;
-    border: 1.8px solid #cbd5f5;
-    margin-bottom: 1.5rem;
-    background: #f9fbff;
-    color: #374151;
-    transition: border-color 0.3s, background 0.3s, color 0.3s;
-  }
-  input:focus {
-    border-color: #4b6edc;
-    outline: none;
-    background: #f0f4ff;
-  }
-  button.calc-btn {
-    background: linear-gradient(to right, #7a9cfb, #4b6edc);
-    border: none;
-    color: white;
-    padding: 16px 26px;
-    font-weight: 700;
+    padding: 15px 18px;
     font-size: 1.1rem;
     border-radius: 14px;
+    border: 2px solid #a7d8d3;
+    margin-bottom: 1.8rem;
+    background: #e0f2f1;
+    color: #004d40;
+    transition: border-color 0.3s, background 0.3s, color 0.3s;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  input:focus {
+    border-color: #ff7043;
+    outline: none;
+    background: #fff3e0;
+    color: #4e342e;
+    font-weight: 600;
+  }
+  button.calc-btn {
+    background: linear-gradient(90deg, #ff7043, #ff5722);
+    border: none;
+    color: white;
+    padding: 18px 30px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border-radius: 20px;
     cursor: pointer;
-    margin-top: 1.25rem;
+    margin-top: 1.5rem;
+    box-shadow: 0 6px 18px rgba(255, 112, 67, 0.5);
+    letter-spacing: 0.05em;
     transition: background 0.3s ease;
-    box-shadow: 0 5px 12px rgba(74, 110, 220, 0.3);
+    user-select: none;
   }
   button.calc-btn:hover {
-    background: linear-gradient(to right, #5b7fdb, #3354b2);
+    background: linear-gradient(90deg, #ff5722, #e64a19);
+  }
+  button.calc-btn:active {
+    transform: scale(0.97);
   }
   .result {
-    margin-top: 1.75rem;
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: #2c3e70;
-    background: #e5ebff;
-    padding: 1.2rem 1.6rem;
-    border-left: 5px solid #4b6edc;
-    border-radius: 8px;
+    margin-top: 2rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #00796b;
+    background: #b2dfdb;
+    padding: 1.6rem 2rem;
+    border-left: 6px solid #ff7043;
+    border-radius: 12px;
     transition: background 0.4s, color 0.4s;
   }
   .warning {
-    color: #e55353;
+    color: #d84315;
+    background: #ffccbc;
+    border-left-color: #d84315;
   }
   ul.aid-list {
     list-style: none;
     padding-left: 0;
     max-height: 320px;
     overflow-y: auto;
-    border: 1.5px solid #cbd5f5;
-    border-radius: 12px;
-    background: #fafcff;
-    box-shadow: inset 0 0 8px rgba(75, 110, 220, 0.12);
+    border: 2px solid #a7d8d3;
+    border-radius: 16px;
+    background: #e0f7f5;
+    box-shadow: inset 0 0 10px rgba(38, 166, 154, 0.15);
     transition: background 0.4s, color 0.4s;
   }
   ul.aid-list li {
-    padding: 16px 20px;
-    border-bottom: 1px solid #dde4fb;
+    padding: 18px 22px;
+    border-bottom: 1.8px solid #b2dfdb;
+    font-weight: 600;
+    color: #004d40cc;
+    letter-spacing: 0.02em;
   }
   ul.aid-list li:last-child {
     border-bottom: none;
   }
   ul.aid-list li strong {
-    color: #4b6edc;
+    color: #00796b;
     display: block;
     margin-bottom: 6px;
   }
   .search-box {
-    margin-top: 14px;
-    margin-bottom: 20px;
+    margin-top: 16px;
+    margin-bottom: 24px;
+    font-style: italic;
   }
 
   /* Scholarship link buttons in aid finder */
   .scholarship-links {
-    margin-top: 1rem;
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
   }
   .scholarship-links h3 {
-    color: #4b6edc;
-    margin-bottom: 0.75rem;
+    color: #00796b;
+    margin-bottom: 1rem;
+    width: 100%;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    font-size: 1.4rem;
   }
   .scholarship-links button {
-    background: #7a9cfb;
+    background: #ff7043;
     border: none;
     color: white;
-    padding: 10px 18px;
-    margin: 5px 8px 5px 0;
-    font-weight: 600;
-    border-radius: 12px;
+    padding: 12px 22px;
+    font-weight: 700;
+    border-radius: 24px;
     cursor: pointer;
-    font-size: 1rem;
-    box-shadow: 0 4px 10px rgba(74, 110, 220, 0.3);
+    font-size: 1.1rem;
+    box-shadow: 0 5px 15px rgba(255, 112, 67, 0.45);
     transition: background 0.3s ease;
+    user-select: none;
+    flex: 1 1 140px;
+    white-space: nowrap;
   }
   .scholarship-links button:hover {
-    background: #4b6edc;
+    background: #e64a19;
   }
 
   /* Dark mode styles */
   body.dark {
-    background: #1e1e2f;
-    color: #c9d1f0;
+    background: #00251a;
+    color: #b2dfdb;
   }
   body.dark header {
-    background: linear-gradient(to right, #2c2c54, #5a5aad);
-    color: #e6e9f0;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+    background: linear-gradient(90deg, #004d40, #00796b);
+    color: #a7d8d3;
+    box-shadow: 0 5px 18px rgba(0, 77, 64, 0.9);
+  }
+  body.dark .dark-mode-toggle {
+    color: #a7d8d3;
+    text-shadow: 0 1px 3px #004d40aa;
   }
   body.dark nav {
-    background: #2a2a45;
+    background: #00332e;
   }
   body.dark nav button {
-    color: #9ba6f0;
+    color: #80cbc4cc;
   }
   body.dark nav button:hover,
   body.dark nav button.active {
-    background: #41416a;
-    color: #d1d6ff;
-    border-bottom-color: #8f9aff;
+    background: #004d40cc;
+    color: #ffab91;
+    border-bottom-color: #ff7043;
   }
   body.dark main {
-    background: #27273a;
-    color: #d4d9f7;
-    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.7);
+    background: #004d40;
+    color: #b2dfdb;
+    box-shadow: 0 16px 48px rgba(38, 166, 154, 0.7);
   }
   body.dark input[type=number], 
   body.dark input[type=text], 
   body.dark input.search-box {
-    background: #3c3c5a;
-    color: #dddff2;
-    border: 1.8px solid #56577a;
+    background: #00332e;
+    border-color: #00897b;
+    color: #b2dfdb;
   }
   body.dark input:focus {
-    background: #454568;
-    border-color: #8f9aff;
-    color: #f0f3ff;
+    background: #004d40;
+    border-color: #ff7043;
+    color: #ffccbc;
+  }
+  body.dark button.calc-btn {
+    background: linear-gradient(90deg, #ff7043, #ff5722);
+    box-shadow: 0 6px 18px rgba(255, 112, 67, 0.7);
   }
   body.dark .result {
-    background: #2d2d54;
-    border-left-color: #8f9aff;
-    color: #bfc8ff;
+    background: #00796b;
+    color: #ffe9dc;
+    border-left-color: #ff7043;
+  }
+  body.dark .warning {
+    color: #ffab91;
+    background: #bf360c;
+    border-left-color: #ff7043;
   }
   body.dark ul.aid-list {
-    background: #2b2b4b;
-    border-color: #56577a;
-    color: #d1d4ff;
-    box-shadow: inset 0 0 14px rgba(143, 154, 255, 0.15);
+    background: #004d40;
+    border-color: #00897b;
+    color: #b2dfdb;
+    box-shadow: inset 0 0 15px rgba(38, 166, 154, 0.5);
   }
   body.dark ul.aid-list li {
-    border-bottom: 1px solid #41416a;
+    border-bottom-color: #00897b;
+    color: #a7d8d3;
   }
   body.dark ul.aid-list li strong {
-    color: #8f9aff;
+    color: #ffab91;
+  }
+  body.dark .scholarship-links {
+    gap: 18px;
   }
   body.dark .scholarship-links button {
-    background: #5a5aad;
-    box-shadow: 0 4px 12px rgba(89, 89, 154, 0.7);
+    background: #ff7043;
+    box-shadow: 0 6px 20px rgba(255, 112, 67, 0.9);
   }
   body.dark .scholarship-links button:hover {
-    background: #8f9aff;
+    background: #e64a19;
+  }
+
+  /* Responsive tweaks */
+  @media (max-width: 680px) {
+    nav button {
+      padding: 1rem 1.4rem;
+      font-size: 1rem;
+    }
+    main {
+      margin: 2rem 1rem 3rem;
+      padding: 2rem 1.8rem 2.5rem;
+      border-radius: 16px;
+    }
   }
 </style>
 </head>
 <body>
 <header>
-  <h1>GradWise Finance</h1>
-  <p>Your Student Financial Helper</p>
-  <label class="dark-mode-toggle" for="darkToggle">
-    <input type="checkbox" id="darkToggle" aria-label="Toggle dark mode" />
+  GradWise Finance 💰<br />
+  <small>Your Student Financial Helper</small>
+  <label class="dark-mode-toggle" for="dark-toggle" title="Toggle dark mode">
+    <input type="checkbox" id="dark-toggle" aria-label="Toggle dark mode" />
     <span class="toggle-switch"></span>
-    <span class="toggle-label">Dark Mode</span>
+    <span class="toggle-label">Dark Mode 🌙</span>
   </label>
 </header>
 
-<nav aria-label="Primary navigation">
-  <button class="nav-btn active" data-target="budgetPlanner" aria-current="page">Budget Planner</button>
-  <button class="nav-btn" data-target="loanEstimator">Loan Estimator</button>
-  <button class="nav-btn" data-target="debtDecoder">Debt Decoder</button>
-  <button class="nav-btn" data-target="financialAid">Financial Aid Finder</button>
+<nav role="tablist" aria-label="Main navigation">
+  <button class="active" role="tab" aria-selected="true" aria-controls="budget" id="tab-budget">📊 Budget Calculator</button>
+  <button role="tab" aria-selected="false" aria-controls="aid-finder" id="tab-aid">🎓 Aid Finder</button>
 </nav>
 
 <main>
-  <!-- Budget Planner -->
-  <section id="budgetPlanner" class="active" tabindex="0" aria-label="Budget Planner">
-    <h2>Budget Planner</h2>
-    <label for="monthlyIncome">Monthly Income ($)</label>
-    <input type="number" id="monthlyIncome" min="0" step="0.01" placeholder="Enter your monthly income" aria-describedby="incomeHelp" />
-    <label for="monthlyExpenses">Monthly Expenses ($)</label>
-    <input type="number" id="monthlyExpenses" min="0" step="0.01" placeholder="Enter your monthly expenses" aria-describedby="expensesHelp" />
-    <button class="calc-btn" id="calcBudget">Calculate Savings</button>
+  <section id="budget" role="tabpanel" aria-labelledby="tab-budget" class="active" tabindex="0">
+    <h2>📊 Budget Calculator</h2>
+    <label for="income">Monthly Income ($):</label>
+    <input type="number" id="income" placeholder="e.g. 1200" min="0" step="0.01" />
+
+    <label for="rent">Monthly Rent ($):</label>
+    <input type="number" id="rent" placeholder="e.g. 600" min="0" step="0.01" />
+
+    <label for="food">Monthly Food ($):</label>
+    <input type="number" id="food" placeholder="e.g. 200" min="0" step="0.01" />
+
+    <label for="transport">Monthly Transport ($):</label>
+    <input type="number" id="transport" placeholder="e.g. 100" min="0" step="0.01" />
+
+    <label for="misc">Monthly Miscellaneous ($):</label>
+    <input type="number" id="misc" placeholder="e.g. 150" min="0" step="0.01" />
+
+    <button class="calc-btn" id="calculateBudgetBtn">Calculate Budget ✅</button>
+
     <div id="budgetResult" class="result" aria-live="polite" role="region"></div>
   </section>
 
-  <!-- Loan Estimator -->
-  <section id="loanEstimator" tabindex="0" aria-label="Loan Estimator">
-    <h2>Loan Estimator</h2>
-    <label for="loanAmount">Loan Amount ($)</label>
-    <input type="number" id="loanAmount" min="0" step="0.01" placeholder="Enter loan amount" />
-    <label for="interestRate">Interest Rate (%)</label>
-    <input type="number" id="interestRate" min="0" step="0.01" placeholder="Annual interest rate" />
-    <label for="loanTerm">Loan Term (Years)</label>
-    <input type="number" id="loanTerm" min="0" step="1" placeholder="Years to repay" />
-    <button class="calc-btn" id="calcLoan">Calculate Monthly Payment</button>
-    <div id="loanResult" class="result" aria-live="polite" role="region"></div>
-  </section>
+  <section id="aid-finder" role="tabpanel" aria-labelledby="tab-aid" tabindex="0" hidden>
+    <h2>🎓 Financial Aid Finder</h2>
+    <label for="schoolSelect">Choose Your School:</label>
+    <select id="schoolSelect" aria-describedby="schoolHelp">
+      <option value="">-- Select School --</option>
+      <option value="gradwise">GradWise University</option>
+      <option value="citystate">City State College</option>
+      <option value="techinst">Tech Institute</option>
+      <option value="liberalarts">Liberal Arts College</option>
+    </select>
+    <small id="schoolHelp" style="color:#004d40cc;">Select your school to see available financial aid options.</small>
 
-  <!-- Debt Decoder -->
-  <section id="debtDecoder" tabindex="0" aria-label="Debt Decoder">
-    <h2>Debt Decoder</h2>
-    <label for="totalDebt">Total Debt Amount ($)</label>
-    <input type="number" id="totalDebt" min="0" step="0.01" placeholder="Enter total debt" />
-    <label for="monthlyPayment">Monthly Payment ($)</label>
-    <input type="number" id="monthlyPayment" min="0" step="0.01" placeholder="Enter monthly payment" />
-    <label for="interestRateDebt">Interest Rate (%)</label>
-    <input type="number" id="interestRateDebt" min="0" step="0.01" placeholder="Interest rate on debt" />
-    <button class="calc-btn" id="calcDebt">Calculate Payoff Time</button>
-    <div id="debtResult" class="result" aria-live="polite" role="region"></div>
-  </section>
+    <label for="aidSearch">Search Scholarships:</label>
+    <input type="text" id="aidSearch" placeholder="Search scholarships or aid programs" class="search-box" aria-label="Search scholarships" />
 
-  <!-- Financial Aid Finder -->
-  <section id="financialAid" tabindex="0" aria-label="Financial Aid Finder">
-    <h2>Financial Aid Finder</h2>
-    <label for="searchScholarships">Search Scholarships</label>
-    <input class="search-box" type="text" id="searchScholarships" placeholder="Type keyword to search scholarships" aria-describedby="searchHelp" />
-    <ul class="aid-list" id="aidList" aria-live="polite" role="list">
-      <li><strong>Federal Student Aid</strong><br />https://studentaid.gov</li>
-      <li><strong>Fastweb</strong><br />https://fastweb.com</li>
-      <li><strong>Scholarships.com</strong><br />https://scholarships.com</li>
-      <li><strong>College Board Scholarship Search</strong><br />https://bigfuture.collegeboard.org/scholarship-search</li>
-      <li><strong>Cappex</strong><br />https://cappex.com/scholarships</li>
+    <ul id="aidList" class="aid-list" aria-live="polite" role="list">
+      <!-- Aid items will appear here -->
     </ul>
-
-
-    <!-- Added Scholarship Link Buttons -->
-    <div class="scholarship-links" aria-label="Other Scholarship Resources">
-      <h3>Other Scholarship Resources:</h3>
-      <button onclick="window.open('https://scholarshipamerica.org/students/browse-scholarships/')">America Scholarships</button>
-      <button onclick="window.open('https://www.unigo.com/', '_blank')">Unigo</button>
-      <button onclick="window.open('https://www.goingmerry.com/', '_blank')">Going Merry</button>
-      <button onclick="window.open('https://www.collegescholarships.org/', '_blank')">College Scholarships</button>
-      <button onclick="window.open('https://www.niche.com/colleges/scholarships/', '_blank')">Niche Scholarships</button>
-      <button onclick="window.open('https://www.chegg.com/scholarships', '_blank')">Chegg Scholarships</button>
-    </div>
   </section>
 </main>
 
 <script>
-  // Navigation buttons switching sections
-  const navButtons = document.querySelectorAll('nav button.nav-btn');
-  const sections = document.querySelectorAll('main section');
+  // Tab switching
+  const tabs = document.querySelectorAll('nav button[role="tab"]');
+  const sections = document.querySelectorAll('main section[role="tabpanel"]');
 
-  navButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      navButtons.forEach(btn => btn.classList.remove('active'));
-      button.classList.add('active');
-
-      const target = button.getAttribute('data-target');
-      sections.forEach(section => {
-        if(section.id === target) {
-          section.classList.add('active');
-          section.focus();
-        } else {
-          section.classList.remove('active');
-        }
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
       });
+      sections.forEach(s => {
+        s.classList.remove('active');
+        s.setAttribute('hidden', true);
+        s.setAttribute('tabindex', '-1');
+      });
+
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      const panel = document.getElementById(tab.getAttribute('aria-controls'));
+      panel.classList.add('active');
+      panel.removeAttribute('hidden');
+      panel.setAttribute('tabindex', '0');
+      panel.focus();
     });
   });
 
-  // Budget Planner calculation
-  document.getElementById('calcBudget').addEventListener('click', () => {
-    const income = parseFloat(document.getElementById('monthlyIncome').value);
-    const expenses = parseFloat(document.getElementById('monthlyExpenses').value);
-    const resultDiv = document.getElementById('budgetResult');
-
-    if (isNaN(income) || isNaN(expenses)) {
-      resultDiv.textContent = 'Please enter valid income and expenses.';
-      resultDiv.classList.add('warning');
-      return;
-    }
-    const savings = income - expenses;
-    resultDiv.classList.remove('warning');
-    if (savings >= 0) {
-      resultDiv.textContent = `Estimated monthly savings: $${savings.toFixed(2)}`;
-    } else {
-      resultDiv.textContent = `Warning: Your expenses exceed your income by $${(-savings).toFixed(2)}.`;
-      resultDiv.classList.add('warning');
-    }
-  });
-
-  // Loan Estimator calculation
-  document.getElementById('calcLoan').addEventListener('click', () => {
-    const loanAmount = parseFloat(document.getElementById('loanAmount').value);
-    const interestRate = parseFloat(document.getElementById('interestRate').value);
-    const loanTerm = parseInt(document.getElementById('loanTerm').value);
-    const resultDiv = document.getElementById('loanResult');
-
-    if (isNaN(loanAmount) || isNaN(interestRate) || isNaN(loanTerm)) {
-      resultDiv.textContent = 'Please enter valid loan amount, interest rate, and loan term.';
-      resultDiv.classList.add('warning');
-      return;
-    }
-
-    const monthlyRate = interestRate / 100 / 12;
-    const numberPayments = loanTerm * 12;
-    const numerator = monthlyRate * Math.pow(1 + monthlyRate, numberPayments);
-    const denominator = Math.pow(1 + monthlyRate, numberPayments) - 1;
-
-    const monthlyPayment = loanAmount * (numerator / denominator);
-    resultDiv.classList.remove('warning');
-    resultDiv.textContent = `Estimated monthly payment: $${monthlyPayment.toFixed(2)}`;
-  });
-
-  // Debt Decoder calculation
-  document.getElementById('calcDebt').addEventListener('click', () => {
-    const totalDebt = parseFloat(document.getElementById('totalDebt').value);
-    const monthlyPayment = parseFloat(document.getElementById('monthlyPayment').value);
-    const interestRateDebt = parseFloat(document.getElementById('interestRateDebt').value);
-    const resultDiv = document.getElementById('debtResult');
-
-    if (isNaN(totalDebt) || isNaN(monthlyPayment) || isNaN(interestRateDebt)) {
-      resultDiv.textContent = 'Please enter valid debt amount, monthly payment, and interest rate.';
-      resultDiv.classList.add('warning');
-      return;
-    }
-
-    if(monthlyPayment <= totalDebt * (interestRateDebt / 100 / 12)) {
-      resultDiv.textContent = 'Monthly payment is too low to cover interest. Debt will never be paid off.';
-      resultDiv.classList.add('warning');
-      return;
-    }
-
-    const monthlyRate = interestRateDebt / 100 / 12;
-    let months = 0;
-    let balance = totalDebt;
-
-    while(balance > 0 && months < 1000) { // Limit to ~83 years max
-      balance = balance * (1 + monthlyRate) - monthlyPayment;
-      months++;
-    }
-
-    if(months >= 1000) {
-      resultDiv.textContent = 'Debt payoff time exceeds reasonable timeframe.';
-      resultDiv.classList.add('warning');
-    } else {
-      const years = Math.floor(months / 12);
-      const remMonths = months % 12;
-      resultDiv.classList.remove('warning');
-      resultDiv.textContent = `Estimated payoff time: ${years} years and ${remMonths} months.`;
-    }
-  });
-
-  // Scholarship Search Filter
-  const searchInput = document.getElementById('searchScholarships');
-  const aidList = document.getElementById('aidList');
-
-  searchInput.addEventListener('input', () => {
-    const filter = searchInput.value.toLowerCase();
-    const items = aidList.getElementsByTagName('li');
-
-    for(let i=0; i < items.length; i++) {
-      const text = items[i].textContent.toLowerCase();
-      if(text.includes(filter)) {
-        items[i].style.display = '';
-      } else {
-        items[i].style.display = 'none';
-      }
-    }
-  });
-
   // Dark mode toggle
-  const darkToggle = document.getElementById('darkToggle');
+  const darkToggle = document.getElementById('dark-toggle');
   darkToggle.addEventListener('change', () => {
-    if(darkToggle.checked) {
-      document.body.classList.add('dark');
+    document.body.classList.toggle('dark', darkToggle.checked);
+  });
+
+  // Budget Calculator
+  const calcBtn = document.getElementById('calculateBudgetBtn');
+  const budgetResult = document.getElementById('budgetResult');
+
+  calcBtn.addEventListener('click', () => {
+    const income = parseFloat(document.getElementById('income').value);
+    const rent = parseFloat(document.getElementById('rent').value);
+    const food = parseFloat(document.getElementById('food').value);
+    const transport = parseFloat(document.getElementById('transport').value);
+    const misc = parseFloat(document.getElementById('misc').value);
+
+    if (
+      isNaN(income) || income < 0 ||
+      isNaN(rent) || rent < 0 ||
+      isNaN(food) || food < 0 ||
+      isNaN(transport) || transport < 0 ||
+      isNaN(misc) || misc < 0
+    ) {
+      budgetResult.classList.add('warning');
+      budgetResult.textContent = "⚠️ Please enter valid non-negative numbers for all fields.";
+      return;
+    }
+
+    const totalExpenses = rent + food + transport + misc;
+    const savings = income - totalExpenses;
+
+    if (savings < 0) {
+      budgetResult.classList.add('warning');
+      budgetResult.textContent = `⚠️ Your expenses exceed your income by $${Math.abs(savings).toFixed(2)}. Consider reducing expenses.`;
     } else {
-      document.body.classList.remove('dark');
+      budgetResult.classList.remove('warning');
+      budgetResult.textContent = `🎉 You have $${savings.toFixed(2)} left each month after expenses. Great job budgeting!`;
     }
   });
+
+  // Financial Aid Finder
+  const schoolSelect = document.getElementById('schoolSelect');
+  const aidList = document.getElementById('aidList');
+  const aidSearch = document.getElementById('aidSearch');
+
+  // Example aid data
+  const aidsData = {
+    gradwise: [
+      { name: "GradWise Merit Scholarship", desc: "Awarded for academic excellence with a $2,000 annual grant." },
+      { name: "GradWise Need-Based Aid", desc: "Financial assistance for students demonstrating need." },
+      { name: "GradWise STEM Grant", desc: "For students pursuing STEM fields, up to $1,500 yearly." }
+    ],
+    citystate: [
+      { name: "City State Foundation Scholarship", desc: "Merit-based scholarship up to $1,200." },
+      { name: "City State Community Aid", desc: "Supporting local students with $800 grants." }
+    ],
+    techinst: [
+      { name: "Tech Institute Innovation Award", desc: "Awarded to tech innovators for $2,500 yearly." },
+      { name: "Tech Inst Women in Tech Grant", desc: "Supporting female tech students with $1,800." }
+    ],
+    liberalarts: [
+      { name: "Liberal Arts Creative Scholarship", desc: "For students excelling in arts with $1,000 awards." },
+      { name: "Liberal Arts Leadership Grant", desc: "Recognizes leadership in campus activities with $1,500." }
+    ]
+  };
+
+  function renderAidList(aids) {
+    aidList.innerHTML = "";
+    if (aids.length === 0) {
+      aidList.innerHTML = "<li>No scholarships found matching your search.</li>";
+      return;
+    }
+    aids.forEach(aid => {
+      const li = document.createElement('li');
+      li.innerHTML = `<strong>${aid.name}</strong>${aid.desc}`;
+      aidList.appendChild(li);
+    });
+  }
+
+  schoolSelect.addEventListener('change', () => {
+    aidSearch.value = "";
+    const selected = schoolSelect.value;
+    if (selected && aidsData[selected]) {
+      renderAidList(aidsData[selected]);
+    } else {
+      aidList.innerHTML = "<li>Please select a school to view available financial aid options.</li>";
+    }
+  });
+
+  aidSearch.addEventListener('input', () => {
+    const selected = schoolSelect.value;
+    const query = aidSearch.value.trim().toLowerCase();
+    if (!selected || !aidsData[selected]) {
+      aidList.innerHTML = "<li>Please select a school to view available financial aid options.</li>";
+      return;
+    }
+    const filtered = aidsData[selected].filter(aid =>
+      aid.name.toLowerCase().includes(query) ||
+      aid.desc.toLowerCase().includes(query)
+    );
+    renderAidList(filtered);
+  });
+
+  // Initial aid message
+  aidList.innerHTML = "<li>Please select a school to view available financial aid options.</li>";
 </script>
 </body>
 </html>
+
 
 
