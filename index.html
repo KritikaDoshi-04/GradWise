@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GradWise Finance - Student Financial Helper</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(to bottom right, #eef3f8, #dbe9f6);
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+  header {
+    background: linear-gradient(to right, #4a90e2, #6fb1fc);
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  header h1 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 2rem;
+  }
+  header p {
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+  }
+  nav {
+    background: white;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  }
+  nav button {
+    background: none;
+    border: none;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #4a90e2;
+    border-bottom: 3px solid transparent;
+  }
+  nav button:hover,
+  nav button.active {
+    background: #e6f0fb;
+    color: #357ABD;
+    border-bottom: 3px solid #357ABD;
+  }
+  main {
+    max-width: 900px;
+    margin: 2rem auto;
+    background: white;
+    padding: 2.5rem 3rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-radius: 14px;
+  }
+  section {
+    display: none;
+    animation: fadeIn 0.4s ease;
+  }
+  section.active {
+    display: block;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  h2 {
+    color: #357ABD;
+    margin-bottom: 1.5rem;
+  }
+  label {
+    display: block;
+    margin: 12px 0 6px;
+    font-weight: 600;
+  }
+  input[type=number], input[type=text], input.search-box {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+    transition: border-color 0.3s;
+  }
+  input:focus {
+    border-color: #4a90e2;
+    outline: none;
+    background: #f9fcff;
+  }
+  button.calc-btn {
+    background: linear-gradient(to right, #4a90e2, #6fb1fc);
+    border: none;
+    color: white;
+    padding: 14px 22px;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background 0.3s ease;
+  }
+  button.calc-btn:hover {
+    background: linear-gradient(to right, #3c7dcf, #5ca4f2);
+  }
+  .result {
+    margin-top: 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #222;
+    background: #f1f8ff;
+    padding: 1rem;
+    border-left: 4px solid #4a90e2;
+    border-radius: 6px;
+  }
+  .warning {
+    color: #d9534f;
+  }
+  ul.aid-list {
+    list-style: none;
+    padding-left: 0;
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: #fdfdfd;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.03);
+  }
+  ul.aid-list li {
+    padding: 14px 16px;
+    border-bottom: 1px solid #eee;
+  }
+  ul.aid-list li:last-child {
+    border-bottom: none;
+  }
+  ul.aid-list li strong {
+    color: #4a90e2;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .search-box {
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>GradWise Finance</h1>
+  <p>Your all-in-one student financial helper</p>
+</header>
+
+<nav>
+  <button id="tab-budget" class="active">Budget Planner</button>
+  <button id="tab-loan">Loan Estimator</button>
+  <button id="tab-debt">Debt Decoder</button>
+  <button id="tab-aid">Financial Aid Finder</button>
+</nav>
+
+<main>
+  <!-- Budget Planner -->
+  <section id="budget" class="active">
+    <h2>Budget Planner</h2>
+    <label for="income">Monthly Income ($)</label>
+    <input type="number" id="income" placeholder="e.g. 1500" />
+
+    <label for="rent">Rent ($)</label>
+    <input type="number" id="rent" placeholder="e.g. 600" />
+
+    <label for="food">Food ($)</label>
+    <input type="number" id="food" placeholder="e.g. 300" />
+
+    <label for="utilities">Utilities ($)</label>
+    <input type="number" id="utilities" placeholder="e.g. 100" />
+
+    <label for="tuition">Tuition ($)</label>
+    <input type="number" id="tuition" placeholder="e.g. 400" />
+
+    <label for="other">Other Expenses ($)</label>
+    <input type="number" id="other" placeholder="e.g. 150" />
+
+    <button class="calc-btn" onclick="calculateBudget()">Calculate Budget</button>
+    <div id="budget-result" class="result"></div>
+  </section>
+
+  <!-- Loan Estimator -->
+  <section id="loan">
+    <h2>Loan Payment Estimator</h2>
+    <label for="loan-amount">Loan Amount ($)</label>
+    <input type="number" id="loan-amount" placeholder="e.g. 10000" />
+
+    <label for="loan-rate">Annual Interest Rate (%)</label>
+    <input type="number" step="0.01" id="loan-rate" placeholder="e.g. 5.5" />
+
+    <label for="loan-years">Loan Term (years)</label>
+    <input type="number" id="loan-years" placeholder="e.g. 10" />
+
+    <button class="calc-btn" onclick="calculateLoan()">Calculate Monthly Payment</button>
+    <div id="loan-result" class="result"></div>
+  </section>
+
+  <!-- Debt Decoder -->
+  <section id="debt">
+    <h2>Debt Decoder</h2>
+    <label for="debt-type">Enter your debt type</label>
+    <input type="text" id="debt-type" placeholder="e.g. credit card, student loan, mortgage" />
+
+    <button class="calc-btn" onclick="decodeDebt()">Decode Debt</button>
+    <div id="debt-result" class="result"></div>
+  </section>
+
+  <!-- Financial Aid Finder -->
+  <section id="aid">
+    <h2>Financial Aid Finder</h2>
+    <input type="text" id="aid-search" class="search-box" placeholder="Search scholarships or grants..." oninput="filterAid()" />
+    <ul id="aid-list" class="aid-list"></ul>
+  </section>
+</main>
+
+<script>
+  // Tab switching logic
+  const tabs = document.querySelectorAll('nav button');
+  const sections = document.querySelectorAll('main section');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      sections.forEach(s => s.classList.remove('active'));
+
+      tab.classList.add('active');
+      document.getElementById(tab.id.replace('tab-', '')).classList.add('active');
+    });
+  });
+
+  // Budget Planner logic
+  function calculateBudget() {
+    const income = parseFloat(document.getElementById('income').value) || 0;
+    const rent = parseFloat(document.getElementById('rent').value) || 0;
+    const food = parseFloat(document.getElementById('food').value) || 0;
+    const utilities = parseFloat(document.getElementById('utilities').value) || 0;
+    const tuition = parseFloat(document.getElementById('tuition').value) || 0;
+    const other = parseFloat(document.getElementById('other').value) || 0;
+
+    const totalExpenses = rent + food + utilities + tuition + other;
+    const remaining = income - totalExpenses;
+
+    const resultDiv = document.getElementById('budget-result');
+
+    if (income === 0) {
+      resultDiv.innerHTML = '<span class="warning">Please enter your income.</span>';
+      return;
+    }
+    if (remaining < 0) {
+      resultDiv.innerHTML = `<span class="warning">Warning: Your expenses exceed your income by $${(-remaining).toFixed(2)}</span>`;
+    } else {
+      resultDiv.textContent = `You have $${remaining.toFixed(2)} left after expenses.`;
+    }
+  }
+
+  // Loan Estimator logic
+  function calculateLoan() {
+    const amount = parseFloat(document.getElementById('loan-amount').value);
+    const annualRate = parseFloat(document.getElementById('loan-rate').value);
+    const years = parseFloat(document.getElementById('loan-years').value);
+
+    const resultDiv = document.getElementById('loan-result');
+
+    if (!amount || !annualRate || !years) {
+      resultDiv.innerHTML = '<span class="warning">Please fill in all fields.</span>';
+      return;
+    }
+
+    const monthlyRate = annualRate / 100 / 12;
+    const months = years * 12;
+    const monthlyPayment = (amount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -months));
+
+    resultDiv.textContent = `Estimated Monthly Payment: $${monthlyPayment.toFixed(2)}`;
+  }
+
+  // Debt Decoder logic
+  function decodeDebt() {
+    const debtInput = document.getElementById('debt-type').value.trim().toLowerCase();
+    const resultDiv = document.getElementById('debt-result');
+
+    if (!debtInput) {
+      resultDiv.innerHTML = '<span class="warning">Please enter a debt type.</span>';
+      return;
+    }
+
+    let category = '';
+    let advice = '';
+
+    if (debtInput.includes('credit card')) {
+      category = 'High-Interest Debt';
+      advice = 'Try to pay more than the minimum payment and avoid new charges.';
+    } else if (debtInput.includes('student loan')) {
+      category = 'Education Debt';
+      advice = 'Explore income-driven repayment plans and deferment options.';
+    } else if (debtInput.includes('mortgage')) {
+      category = 'Long-Term Debt';
+      advice = 'Consider refinancing if interest rates drop.';
+    } else if (debtInput.includes('auto') || debtInput.includes('car')) {
+      category = 'Secured Debt';
+      advice = 'Keep payments regular to avoid repossession.';
+    } else if (debtInput.includes('personal loan')) {
+      category = 'Unsecured Debt';
+      advice = 'Maintain payments to protect your credit score.';
+    } else {
+      category = 'Unknown Debt Type';
+      advice = 'Consult your lender or a financial advisor for specific advice.';
+    }
+
+    resultDiv.innerHTML = `<strong>Category:</strong> ${category}<br/><strong>Advice:</strong> ${advice}`;
+  }
+
+  // Financial Aid Finder - Sample static data
+  const financialAidData = [
+    { name: 'Pell Grant', type: 'Grant', description: 'Federal grant for low-income students.' },
+    { name: 'FAFSA', type: 'Application', description: 'Free Application for Federal Student Aid.' },
+    { name: 'National Merit Scholarship', type: 'Scholarship', description: 'Awarded for academic excellence.' },
+    { name: 'Work-Study Program', type: 'Work', description: 'Part-time jobs for students with financial need.' },
+    { name: 'State Grant Program', type: 'Grant', description: 'State-specific financial aid grants.' },
+    { name: 'Private Scholarships', type: 'Scholarship', description: 'Scholarships offered by private organizations.' },
+    { name: 'Teacher Education Assistance for College and Higher Education (TEACH) Grant', type: 'Grant', description: 'For students who plan to become teachers.' },
+  ];
+
+  function renderAidList(items) {
+    const list = document.getElementById('aid-list');
+    if (items.length === 0) {
+      list.innerHTML = '<li>No results found.</li>';
+      return;
+    }
+    list.innerHTML = items.map(item =>
+      `<li><strong>${item.name}</strong> - <em>${item.type}</em><br/>${item.description}</li>`
+    ).join('');
+  }
+
+  function filterAid() {
+    const query = document.getElementById('aid-search').value.toLowerCase();
+    const filtered = financialAidData.filter(item =>
+      item.name.toLowerCase().includes(query) ||
+      item.type.toLowerCase().includes(query) ||
+      item.description.toLowerCase().includes(query)
+    );
+    renderAidList(filtered);
+  }
+
+  // Initialize aid list on page load
+  renderAidList(financialAidData);
+</script>
+
+</body>
+</html>
