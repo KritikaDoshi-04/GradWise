@@ -11,60 +11,85 @@
   }
   body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to bottom right, #f0f4f8, #d8e4f9);
+    background: linear-gradient(to bottom right, #f0f4fb, #d9e4f8);
     margin: 0;
     padding: 0;
-    color: #2c3e50;
+    color: #3a3a3a;
     transition: background 0.4s, color 0.4s;
   }
   header {
-    background: linear-gradient(to right, #6ca0dc, #9cc2e5);
+    background: linear-gradient(to right, #7aa9f7, #a6c1ff);
     color: white;
     padding: 2rem 1rem;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(44, 62, 80, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     position: relative;
   }
   header h1 {
     margin: 0;
     font-weight: 600;
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
   header p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     margin-top: 0.5rem;
     font-weight: 400;
   }
-  /* Dark mode toggle button */
+
+  /* Dark mode toggle switch */
   .dark-mode-toggle {
     position: absolute;
     top: 1.2rem;
     right: 1.5rem;
-    background: #fff;
-    color: #5a8edc;
-    border: none;
-    border-radius: 18px;
-    padding: 0.45rem 1.2rem;
-    font-size: 0.98rem;
-    font-weight: 600;
-    cursor: pointer;
-    box-shadow: 0 1px 4px rgba(90, 142, 220, 0.15);
-    transition: background 0.3s, color 0.3s;
     display: flex;
     align-items: center;
-    gap: 0.45em;
-    z-index: 1;
+    gap: 0.5em;
+    cursor: pointer;
+    user-select: none;
   }
-  .dark-mode-toggle:hover {
-    background: #e4eafc;
-    color: #1c3c7d;
+  .dark-mode-toggle input[type="checkbox"] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+  }
+  .toggle-switch {
+    width: 46px;
+    height: 24px;
+    background: #d0d9ff;
+    border-radius: 30px;
+    position: relative;
+    transition: background-color 0.3s ease;
+  }
+  .toggle-switch::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    transition: 0.3s;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+  input[type="checkbox"]:checked + .toggle-switch {
+    background: #5a81f7;
+  }
+  input[type="checkbox"]:checked + .toggle-switch::after {
+    left: calc(100% - 22px);
+  }
+  .toggle-label {
+    font-weight: 600;
+    color: white;
+    font-size: 0.95rem;
+    user-select: none;
   }
 
   nav {
     background: white;
     display: flex;
     justify-content: center;
-    box-shadow: 0 2px 6px rgba(44, 62, 80, 0.07);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
     transition: background 0.4s;
   }
   nav button {
@@ -72,26 +97,26 @@
     border: none;
     padding: 1rem 2.5rem;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.05rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    color: #6ca0dc;
+    color: #7a9cfb;
     border-bottom: 3px solid transparent;
-    border-radius: 8px 8px 0 0;
+    border-radius: 6px 6px 0 0;
   }
   nav button:hover,
   nav button.active {
-    background: #d7e3fa;
-    color: #1c3c7d;
-    border-bottom: 3px solid #1c3c7d;
+    background: #e7eeff;
+    color: #4b6edc;
+    border-bottom: 3px solid #4b6edc;
   }
   main {
     max-width: 900px;
-    margin: 2rem auto 4rem auto;
+    margin: 2.5rem auto;
     background: white;
-    padding: 2.5rem 3rem;
-    box-shadow: 0 10px 30px rgba(44, 62, 80, 0.08);
-    border-radius: 14px;
+    padding: 3rem 3.5rem;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.06);
+    border-radius: 16px;
     transition: background 0.4s, color 0.4s;
   }
   section {
@@ -102,269 +127,180 @@
     display: block;
   }
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
+    from { opacity: 0; transform: translateY(12px); }
     to { opacity: 1; transform: translateY(0); }
   }
   h2 {
-    color: #1c3c7d;
-    margin-bottom: 1.5rem;
+    color: #4b6edc;
+    margin-bottom: 1.8rem;
   }
   label {
     display: block;
-    margin: 12px 0 6px;
+    margin: 14px 0 6px;
     font-weight: 600;
+    color: #506680;
   }
   input[type=number], input[type=text], input.search-box {
     width: 100%;
-    padding: 12px 14px;
-    font-size: 1rem;
+    padding: 14px 16px;
+    font-size: 1.05rem;
     border-radius: 10px;
-    border: 1.5px solid #aec7f7;
-    margin-bottom: 1rem;
+    border: 1.8px solid #cbd5f5;
+    margin-bottom: 1.5rem;
+    background: #f9fbff;
+    color: #374151;
     transition: border-color 0.3s, background 0.3s, color 0.3s;
-    background: #f8faff;
-    color: #2c3e50;
   }
   input:focus {
-    border-color: #5a8edc;
+    border-color: #4b6edc;
     outline: none;
-    background: #e8f0fe;
+    background: #f0f4ff;
   }
   button.calc-btn {
-    background: linear-gradient(to right, #6ca0dc, #9cc2e5);
+    background: linear-gradient(to right, #7a9cfb, #4b6edc);
     border: none;
     color: white;
-    padding: 14px 26px;
-    font-weight: 600;
-    font-size: 1rem;
-    border-radius: 12px;
+    padding: 16px 26px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 14px;
     cursor: pointer;
-    margin-top: 1rem;
+    margin-top: 1.25rem;
     transition: background 0.3s ease;
-    box-shadow: 0 4px 12px rgba(108, 160, 220, 0.5);
+    box-shadow: 0 5px 12px rgba(74, 110, 220, 0.3);
   }
   button.calc-btn:hover {
-    background: linear-gradient(to right, #5a8edc, #7db3f3);
+    background: linear-gradient(to right, #5b7fdb, #3354b2);
   }
   .result {
-    margin-top: 1.5rem;
+    margin-top: 1.75rem;
     font-size: 1.15rem;
     font-weight: 600;
-    color: #2c3e50;
-    background: #e8f0fe;
-    padding: 1rem 1.3rem;
-    border-left: 5px solid #6ca0dc;
+    color: #2c3e70;
+    background: #e5ebff;
+    padding: 1.2rem 1.6rem;
+    border-left: 5px solid #4b6edc;
     border-radius: 8px;
     transition: background 0.4s, color 0.4s;
   }
   .warning {
-    color: #d9534f;
+    color: #e55353;
   }
   ul.aid-list {
     list-style: none;
     padding-left: 0;
-    max-height: 300px;
+    max-height: 320px;
     overflow-y: auto;
-    border: 1px solid #aec7f7;
+    border: 1.5px solid #cbd5f5;
     border-radius: 12px;
-    background: #f8fbff;
-    box-shadow: inset 0 0 8px rgba(108, 160, 220, 0.1);
+    background: #fafcff;
+    box-shadow: inset 0 0 8px rgba(75, 110, 220, 0.12);
     transition: background 0.4s, color 0.4s;
   }
   ul.aid-list li {
-    padding: 14px 18px;
-    border-bottom: 1px solid #d5e2fb;
+    padding: 16px 20px;
+    border-bottom: 1px solid #dde4fb;
   }
   ul.aid-list li:last-child {
     border-bottom: none;
   }
   ul.aid-list li strong {
-    color: #5a8edc;
+    color: #4b6edc;
     display: block;
-    margin-bottom: 4px;
-    font-weight: 600;
+    margin-bottom: 6px;
   }
   .search-box {
-    margin-top: 10px;
-    border-radius: 12px;
+    margin-top: 14px;
+    margin-bottom: 20px;
   }
 
-  /* Button for Scholarship links */
-  .scholarship-btn {
+  /* Scholarship link buttons in aid finder */
+  .scholarship-links {
     margin-top: 1rem;
-    background: #5a8edc;
+  }
+  .scholarship-links h3 {
+    color: #4b6edc;
+    margin-bottom: 0.75rem;
+  }
+  .scholarship-links button {
+    background: #7a9cfb;
     border: none;
     color: white;
-    padding: 12px 22px;
-    font-size: 1rem;
+    padding: 10px 18px;
+    margin: 5px 8px 5px 0;
     font-weight: 600;
     border-radius: 12px;
     cursor: pointer;
-    box-shadow: 0 3px 10px rgba(90, 142, 220, 0.6);
+    font-size: 1rem;
+    box-shadow: 0 4px 10px rgba(74, 110, 220, 0.3);
     transition: background 0.3s ease;
   }
-  .scholarship-btn:hover {
-    background: #4a7ac9;
+  .scholarship-links button:hover {
+    background: #4b6edc;
   }
 
-  /* Modal styles */
-  .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(44, 62, 80, 0.6);
-    backdrop-filter: blur(3px);
-    z-index: 999;
-    justify-content: center;
-    align-items: center;
+  /* Dark mode styles */
+  body.dark {
+    background: #1e1e2f;
+    color: #c9d1f0;
   }
-  .modal-overlay.active {
-    display: flex;
+  body.dark header {
+    background: linear-gradient(to right, #2c2c54, #5a5aad);
+    color: #e6e9f0;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
   }
-  .modal {
-    background: white;
-    border-radius: 16px;
-    padding: 2rem 2.5rem;
-    max-width: 420px;
-    width: 90%;
-    box-shadow: 0 12px 30px rgba(44, 62, 80, 0.25);
-    text-align: center;
-    position: relative;
-    font-family: 'Poppins', sans-serif;
+  body.dark nav {
+    background: #2a2a45;
   }
-  .modal h3 {
-    margin-top: 0;
-    color: #1c3c7d;
-    font-weight: 700;
-    margin-bottom: 1rem;
+  body.dark nav button {
+    color: #9ba6f0;
   }
-  .modal button {
-    margin: 0.6rem 0.3rem;
-    padding: 10px 18px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    background: #6ca0dc;
-    color: white;
-    box-shadow: 0 4px 12px rgba(108, 160, 220, 0.5);
-    transition: background 0.3s ease;
+  body.dark nav button:hover,
+  body.dark nav button.active {
+    background: #41416a;
+    color: #d1d6ff;
+    border-bottom-color: #8f9aff;
   }
-  .modal button:hover {
-    background: #5a8edc;
+  body.dark main {
+    background: #27273a;
+    color: #d4d9f7;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.7);
   }
-  .modal .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 14px;
-    font-size: 1.4rem;
-    font-weight: 700;
-    background: transparent;
-    border: none;
-    color: #1c3c7d;
-    cursor: pointer;
+  body.dark input[type=number], 
+  body.dark input[type=text], 
+  body.dark input.search-box {
+    background: #3c3c5a;
+    color: #dddff2;
+    border: 1.8px solid #56577a;
   }
-
-  /* =================== DARK MODE ======================== */
-  body.dark-mode {
-    background: linear-gradient(to bottom right, #1a2633, #2c3e50);
-    color: #e4e8ee;
+  body.dark input:focus {
+    background: #454568;
+    border-color: #8f9aff;
+    color: #f0f3ff;
   }
-  body.dark-mode header {
-    background: linear-gradient(to right, #2e497c, #5a8edc);
-    color: #e4e8ee;
-    box-shadow: 0 4px 12px rgba(20, 32, 60, 0.17);
+  body.dark .result {
+    background: #2d2d54;
+    border-left-color: #8f9aff;
+    color: #bfc8ff;
   }
-  body.dark-mode .dark-mode-toggle {
-    background: #2c3e50;
-    color: #a9c1f7;
-    box-shadow: 0 2px 8px rgba(30,50,80,0.1);
+  body.dark ul.aid-list {
+    background: #2b2b4b;
+    border-color: #56577a;
+    color: #d1d4ff;
+    box-shadow: inset 0 0 14px rgba(143, 154, 255, 0.15);
   }
-  body.dark-mode .dark-mode-toggle:hover {
-    background: #222e3d;
-    color: #9cc2e5;
+  body.dark ul.aid-list li {
+    border-bottom: 1px solid #41416a;
   }
-  body.dark-mode nav {
-    background: #222e3d;
-    box-shadow: 0 2px 6px rgba(30,50,80,0.09);
+  body.dark ul.aid-list li strong {
+    color: #8f9aff;
   }
-  body.dark-mode nav button {
-    color: #a9c1f7;
+  body.dark .scholarship-links button {
+    background: #5a5aad;
+    box-shadow: 0 4px 12px rgba(89, 89, 154, 0.7);
   }
-  body.dark-mode nav button:hover,
-  body.dark-mode nav button.active {
-    background: #344b6b;
-    color: #cce1ff;
-    border-bottom: 3px solid #9cc2e5;
-  }
-  body.dark-mode main {
-    background: #232c3c;
-    color: #e4e8ee;
-    box-shadow: 0 10px 36px rgba(20, 32, 60, 0.13);
-  }
-  body.dark-mode h2 {
-    color: #9cc2e5;
-  }
-  body.dark-mode label {
-    color: #c1d1f0;
-  }
-  body.dark-mode input[type=number], 
-  body.dark-mode input[type=text], 
-  body.dark-mode input.search-box {
-    background: #27344a;
-    color: #e4e8ee;
-    border: 1px solid #3a4660;
-  }
-  body.dark-mode input:focus {
-    background: #222e3d;
-    border-color: #9cc2e5;
-  }
-  body.dark-mode button.calc-btn {
-    background: linear-gradient(to right, #5a8edc, #9cc2e5);
-    color: #fff;
-    box-shadow: 0 4px 12px rgba(90, 142, 220, 0.6);
-  }
-  body.dark-mode button.calc-btn:hover {
-    background: linear-gradient(to right, #4a7ac9, #7da9e8);
-  }
-  body.dark-mode .result {
-    background: #1d2733;
-    color: #dbe9ff;
-    border-left: 5px solid #9cc2e5;
-  }
-  body.dark-mode .warning {
-    color: #f28b82;
-  }
-  body.dark-mode ul.aid-list {
-    background: #27344a;
-    border: 1px solid #3a4660;
-    box-shadow: inset 0 0 8px rgba(90, 142, 220, 0.3);
-  }
-  body.dark-mode ul.aid-list li strong {
-    color: #9cc2e5;
-  }
-  body.dark-mode .scholarship-btn {
-    background: #4a7ac9;
-    box-shadow: 0 3px 10px rgba(74, 122, 201, 0.7);
-  }
-  body.dark-mode .scholarship-btn:hover {
-    background: #3c68b5;
-  }
-  body.dark-mode .modal {
-    background: #27344a;
-    color: #e4e8ee;
-    box-shadow: 0 12px 30px rgba(20, 32, 60, 0.5);
-  }
-  body.dark-mode .modal button {
-    background: #5a8edc;
-    color: white;
-  }
-  body.dark-mode .modal button:hover {
-    background: #4a7ac9;
-  }
-  body.dark-mode .modal .close-btn {
-    color: #9cc2e5;
+  body.dark .scholarship-links button:hover {
+    background: #8f9aff;
   }
 </style>
 </head>
@@ -372,68 +308,88 @@
 <header>
   <h1>GradWise Finance</h1>
   <p>Your Student Financial Helper</p>
-  <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">🌙 Dark Mode</button>
+  <label class="dark-mode-toggle" for="darkToggle">
+    <input type="checkbox" id="darkToggle" aria-label="Toggle dark mode" />
+    <span class="toggle-switch"></span>
+    <span class="toggle-label">Dark Mode</span>
+  </label>
 </header>
-<nav>
-  <button class="active" data-section="calculator">Loan Calculator</button>
-  <button data-section="financialAid">Financial Aid Finder</button>
+
+<nav aria-label="Primary navigation">
+  <button class="nav-btn active" data-target="budgetPlanner" aria-current="page">Budget Planner</button>
+  <button class="nav-btn" data-target="loanEstimator">Loan Estimator</button>
+  <button class="nav-btn" data-target="debtDecoder">Debt Decoder</button>
+  <button class="nav-btn" data-target="financialAid">Financial Aid Finder</button>
 </nav>
+
 <main>
-  <section id="calculator" class="active" aria-label="Loan calculator section">
-    <h2>Student Loan Calculator</h2>
-    <label for="loanAmount">Loan Amount ($):</label>
-    <input type="number" id="loanAmount" min="0" step="0.01" placeholder="e.g., 15000" aria-describedby="loanAmountDesc" />
-    <div id="loanAmountDesc" class="sr-only">Enter your loan principal amount</div>
-
-    <label for="interestRate">Interest Rate (% per year):</label>
-    <input type="number" id="interestRate" min="0" step="0.01" placeholder="e.g., 5.5" aria-describedby="interestRateDesc" />
-    <div id="interestRateDesc" class="sr-only">Enter the annual interest rate for the loan</div>
-
-    <label for="loanTerm">Loan Term (years):</label>
-    <input type="number" id="loanTerm" min="1" step="1" placeholder="e.g., 10" aria-describedby="loanTermDesc" />
-    <div id="loanTermDesc" class="sr-only">Enter the number of years for the loan repayment</div>
-
-    <button class="calc-btn" id="calculateBtn">Calculate</button>
-    <div id="calcResult" class="result" role="region" aria-live="polite"></div>
+  <!-- Budget Planner -->
+  <section id="budgetPlanner" class="active" tabindex="0" aria-label="Budget Planner">
+    <h2>Budget Planner</h2>
+    <label for="monthlyIncome">Monthly Income ($)</label>
+    <input type="number" id="monthlyIncome" min="0" step="0.01" placeholder="Enter your monthly income" aria-describedby="incomeHelp" />
+    <label for="monthlyExpenses">Monthly Expenses ($)</label>
+    <input type="number" id="monthlyExpenses" min="0" step="0.01" placeholder="Enter your monthly expenses" aria-describedby="expensesHelp" />
+    <button class="calc-btn" id="calcBudget">Calculate Savings</button>
+    <div id="budgetResult" class="result" aria-live="polite" role="region"></div>
   </section>
 
-  <section id="financialAid" aria-label="Financial Aid Finder">
-    <h2>Financial Aid Finder</h2>
-    <label for="searchAid">Search for Financial Aid:</label>
-    <input type="text" id="searchAid" class="search-box" placeholder="Type keyword (e.g., scholarships, grants, federal aid)" aria-describedby="searchAidDesc" />
-    <div id="searchAidDesc" class="sr-only">Search financial aid opportunities</div>
+  <!-- Loan Estimator -->
+  <section id="loanEstimator" tabindex="0" aria-label="Loan Estimator">
+    <h2>Loan Estimator</h2>
+    <label for="loanAmount">Loan Amount ($)</label>
+    <input type="number" id="loanAmount" min="0" step="0.01" placeholder="Enter loan amount" />
+    <label for="interestRate">Interest Rate (%)</label>
+    <input type="number" id="interestRate" min="0" step="0.01" placeholder="Annual interest rate" />
+    <label for="loanTerm">Loan Term (Years)</label>
+    <input type="number" id="loanTerm" min="0" step="1" placeholder="Years to repay" />
+    <button class="calc-btn" id="calcLoan">Calculate Monthly Payment</button>
+    <div id="loanResult" class="result" aria-live="polite" role="region"></div>
+  </section>
 
-    <ul class="aid-list" id="aidList" aria-live="polite" aria-label="List of financial aid opportunities">
-      <li><strong>Federal Pell Grant</strong> — A grant for undergraduate students with financial need.</li>
-      <li><strong>FAFSA</strong> — Free Application for Federal Student Aid, a gateway to federal and state aid.</li>
-      <li><strong>State Grant Program</strong> — State-specific grants to support in-state students.</li>
-      <li><strong>Work-Study Program</strong> — Part-time work opportunities for students with financial need.</li>
-      <li><strong>Private Scholarships</strong> — Scholarships offered by private organizations.</li>
-      <li><strong>Direct Subsidized Loan</strong> — Federal student loan with interest paid by government while in school.</li>
-      <li><strong>Direct Unsubsidized Loan</strong> — Federal loan available regardless of financial need.</li>
+  <!-- Debt Decoder -->
+  <section id="debtDecoder" tabindex="0" aria-label="Debt Decoder">
+    <h2>Debt Decoder</h2>
+    <label for="totalDebt">Total Debt Amount ($)</label>
+    <input type="number" id="totalDebt" min="0" step="0.01" placeholder="Enter total debt" />
+    <label for="monthlyPayment">Monthly Payment ($)</label>
+    <input type="number" id="monthlyPayment" min="0" step="0.01" placeholder="Enter monthly payment" />
+    <label for="interestRateDebt">Interest Rate (%)</label>
+    <input type="number" id="interestRateDebt" min="0" step="0.01" placeholder="Interest rate on debt" />
+    <button class="calc-btn" id="calcDebt">Calculate Payoff Time</button>
+    <div id="debtResult" class="result" aria-live="polite" role="region"></div>
+  </section>
+
+  <!-- Financial Aid Finder -->
+  <section id="financialAid" tabindex="0" aria-label="Financial Aid Finder">
+    <h2>Financial Aid Finder</h2>
+    <label for="searchScholarships">Search Scholarships</label>
+    <input class="search-box" type="text" id="searchScholarships" placeholder="Type keyword to search scholarships" aria-describedby="searchHelp" />
+    <ul class="aid-list" id="aidList" aria-live="polite" role="list">
+      <li><strong>Federal Student Aid</strong><br />https://studentaid.gov</li>
+      <li><strong>Fastweb</strong><br />https://fastweb.com</li>
+      <li><strong>Scholarships.com</strong><br />https://scholarships.com</li>
+      <li><strong>College Board Scholarship Search</strong><br />https://bigfuture.collegeboard.org/scholarship-search</li>
+      <li><strong>Cappex</strong><br />https://cappex.com/scholarships</li>
     </ul>
 
-    <button class="scholarship-btn" id="openScholarshipModal">American Scholarships</button>
+    <button class="calc-btn" id="openScholarshipModal" style="margin-top:1.2rem;">American Scholarships</button>
+
+    <!-- Added Scholarship Link Buttons -->
+    <div class="scholarship-links" aria-label="Other Scholarship Resources">
+      <h3>Other Scholarship Resources:</h3>
+      <button onclick="window.open('https://www.unigo.com/', '_blank')">Unigo</button>
+      <button onclick="window.open('https://www.goingmerry.com/', '_blank')">Going Merry</button>
+      <button onclick="window.open('https://www.collegescholarships.org/', '_blank')">College Scholarships</button>
+      <button onclick="window.open('https://www.niche.com/colleges/scholarships/', '_blank')">Niche Scholarships</button>
+      <button onclick="window.open('https://www.chegg.com/scholarships', '_blank')">Chegg Scholarships</button>
+    </div>
   </section>
 </main>
 
-<!-- Modal for Scholarship links -->
-<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
-  <div class="modal">
-    <button class="close-btn" aria-label="Close scholarship links modal" id="closeModal">&times;</button>
-    <h3 id="modalTitle">Popular American Scholarship Sites</h3>
-    <p id="modalDesc">Click a button to visit the scholarship website:</p>
-    <button onclick="window.open('https://www.fastweb.com/', '_blank')">Fastweb</button>
-    <button onclick="window.open('https://www.scholarships.com/', '_blank')">Scholarships.com</button>
-    <button onclick="window.open('https://www.cappex.com/', '_blank')">Cappex</button>
-    <button onclick="window.open('https://www.collegeboard.org/', '_blank')">College Board</button>
-    <button onclick="window.open('https://studentaid.gov/', '_blank')">StudentAid.gov</button>
-  </div>
-</div>
-
 <script>
-  // Section navigation
-  const navButtons = document.querySelectorAll('nav button');
+  // Navigation buttons switching sections
+  const navButtons = document.querySelectorAll('nav button.nav-btn');
   const sections = document.querySelectorAll('main section');
 
   navButtons.forEach(button => {
@@ -441,10 +397,11 @@
       navButtons.forEach(btn => btn.classList.remove('active'));
       button.classList.add('active');
 
-      const sectionId = button.getAttribute('data-section');
+      const target = button.getAttribute('data-target');
       sections.forEach(section => {
-        if(section.id === sectionId) {
+        if(section.id === target) {
           section.classList.add('active');
+          section.focus();
         } else {
           section.classList.remove('active');
         }
@@ -452,125 +409,118 @@
     });
   });
 
-  // Loan calculator logic
-  const loanAmountInput = document.getElementById('loanAmount');
-  const interestRateInput = document.getElementById('interestRate');
-  const loanTermInput = document.getElementById('loanTerm');
-  const calculateBtn = document.getElementById('calculateBtn');
-  const calcResult = document.getElementById('calcResult');
+  // Budget Planner calculation
+  document.getElementById('calcBudget').addEventListener('click', () => {
+    const income = parseFloat(document.getElementById('monthlyIncome').value);
+    const expenses = parseFloat(document.getElementById('monthlyExpenses').value);
+    const resultDiv = document.getElementById('budgetResult');
 
-  calculateBtn.addEventListener('click', () => {
-    const principal = parseFloat(loanAmountInput.value);
-    const annualRate = parseFloat(interestRateInput.value) / 100;
-    const years = parseInt(loanTermInput.value);
-
-    if (isNaN(principal) || principal <= 0) {
-      calcResult.innerHTML = '<span class="warning">Please enter a valid loan amount greater than zero.</span>';
+    if (isNaN(income) || isNaN(expenses)) {
+      resultDiv.textContent = 'Please enter valid income and expenses.';
+      resultDiv.classList.add('warning');
       return;
     }
-    if (isNaN(annualRate) || annualRate < 0) {
-      calcResult.innerHTML = '<span class="warning">Please enter a valid interest rate (0 or more).</span>';
-      return;
-    }
-    if (isNaN(years) || years <= 0) {
-      calcResult.innerHTML = '<span class="warning">Please enter a valid loan term (years) greater than zero.</span>';
-      return;
-    }
-
-    // Monthly interest rate
-    const monthlyRate = annualRate / 12;
-
-    // Number of payments
-    const n = years * 12;
-
-    let monthlyPayment;
-
-    if(monthlyRate === 0) {
-      // No interest loan
-      monthlyPayment = principal / n;
+    const savings = income - expenses;
+    resultDiv.classList.remove('warning');
+    if (savings >= 0) {
+      resultDiv.textContent = `Estimated monthly savings: $${savings.toFixed(2)}`;
     } else {
-      monthlyPayment = principal * monthlyRate / (1 - Math.pow(1 + monthlyRate, -n));
+      resultDiv.textContent = `Warning: Your expenses exceed your income by $${(-savings).toFixed(2)}.`;
+      resultDiv.classList.add('warning');
     }
-
-    const totalPayment = monthlyPayment * n;
-    const totalInterest = totalPayment - principal;
-
-    calcResult.innerHTML = `
-      Monthly Payment: $${monthlyPayment.toFixed(2)}<br />
-      Total Payment: $${totalPayment.toFixed(2)}<br />
-      Total Interest: $${totalInterest.toFixed(2)}
-    `;
   });
 
-  // Financial Aid Search filter
-  const searchAidInput = document.getElementById('searchAid');
+  // Loan Estimator calculation
+  document.getElementById('calcLoan').addEventListener('click', () => {
+    const loanAmount = parseFloat(document.getElementById('loanAmount').value);
+    const interestRate = parseFloat(document.getElementById('interestRate').value);
+    const loanTerm = parseInt(document.getElementById('loanTerm').value);
+    const resultDiv = document.getElementById('loanResult');
+
+    if (isNaN(loanAmount) || isNaN(interestRate) || isNaN(loanTerm)) {
+      resultDiv.textContent = 'Please enter valid loan amount, interest rate, and loan term.';
+      resultDiv.classList.add('warning');
+      return;
+    }
+
+    const monthlyRate = interestRate / 100 / 12;
+    const numberPayments = loanTerm * 12;
+    const numerator = monthlyRate * Math.pow(1 + monthlyRate, numberPayments);
+    const denominator = Math.pow(1 + monthlyRate, numberPayments) - 1;
+
+    const monthlyPayment = loanAmount * (numerator / denominator);
+    resultDiv.classList.remove('warning');
+    resultDiv.textContent = `Estimated monthly payment: $${monthlyPayment.toFixed(2)}`;
+  });
+
+  // Debt Decoder calculation
+  document.getElementById('calcDebt').addEventListener('click', () => {
+    const totalDebt = parseFloat(document.getElementById('totalDebt').value);
+    const monthlyPayment = parseFloat(document.getElementById('monthlyPayment').value);
+    const interestRateDebt = parseFloat(document.getElementById('interestRateDebt').value);
+    const resultDiv = document.getElementById('debtResult');
+
+    if (isNaN(totalDebt) || isNaN(monthlyPayment) || isNaN(interestRateDebt)) {
+      resultDiv.textContent = 'Please enter valid debt amount, monthly payment, and interest rate.';
+      resultDiv.classList.add('warning');
+      return;
+    }
+
+    if(monthlyPayment <= totalDebt * (interestRateDebt / 100 / 12)) {
+      resultDiv.textContent = 'Monthly payment is too low to cover interest. Debt will never be paid off.';
+      resultDiv.classList.add('warning');
+      return;
+    }
+
+    const monthlyRate = interestRateDebt / 100 / 12;
+    let months = 0;
+    let balance = totalDebt;
+
+    while(balance > 0 && months < 1000) { // Limit to ~83 years max
+      balance = balance * (1 + monthlyRate) - monthlyPayment;
+      months++;
+    }
+
+    if(months >= 1000) {
+      resultDiv.textContent = 'Debt payoff time exceeds reasonable timeframe.';
+      resultDiv.classList.add('warning');
+    } else {
+      const years = Math.floor(months / 12);
+      const remMonths = months % 12;
+      resultDiv.classList.remove('warning');
+      resultDiv.textContent = `Estimated payoff time: ${years} years and ${remMonths} months.`;
+    }
+  });
+
+  // Scholarship Search Filter
+  const searchInput = document.getElementById('searchScholarships');
   const aidList = document.getElementById('aidList');
-  const aidItems = aidList.getElementsByTagName('li');
 
-  searchAidInput.addEventListener('input', () => {
-    const filter = searchAidInput.value.toLowerCase();
+  searchInput.addEventListener('input', () => {
+    const filter = searchInput.value.toLowerCase();
+    const items = aidList.getElementsByTagName('li');
 
-    for(let item of aidItems) {
-      const text = item.textContent.toLowerCase();
+    for(let i=0; i < items.length; i++) {
+      const text = items[i].textContent.toLowerCase();
       if(text.includes(filter)) {
-        item.style.display = '';
+        items[i].style.display = '';
       } else {
-        item.style.display = 'none';
+        items[i].style.display = 'none';
       }
     }
   });
 
   // Dark mode toggle
-  const darkModeToggle = document.getElementById('darkModeToggle');
-  darkModeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    if(document.body.classList.contains('dark-mode')) {
-      darkModeToggle.textContent = '☀️ Light Mode';
-      darkModeToggle.setAttribute('aria-label', 'Toggle light mode');
+  const darkToggle = document.getElementById('darkToggle');
+  darkToggle.addEventListener('change', () => {
+    if(darkToggle.checked) {
+      document.body.classList.add('dark');
     } else {
-      darkModeToggle.textContent = '🌙 Dark Mode';
-      darkModeToggle.setAttribute('aria-label', 'Toggle dark mode');
+      document.body.classList.remove('dark');
     }
   });
-
-  // Modal logic
-  const openModalBtn = document.getElementById('openScholarshipModal');
-  const modalOverlay = document.getElementById('modalOverlay');
-  const closeModalBtn = document.getElementById('closeModal');
-
-  openModalBtn.addEventListener('click', () => {
-    modalOverlay.classList.add('active');
-    // Set focus inside modal for accessibility
-    closeModalBtn.focus();
-  });
-
-  closeModalBtn.addEventListener('click', () => {
-    modalOverlay.classList.remove('active');
-    openModalBtn.focus();
-  });
-
-  // Close modal on ESC key
-  document.addEventListener('keydown', (e) => {
-    if(e.key === 'Escape' && modalOverlay.classList.contains('active')) {
-      modalOverlay.classList.remove('active');
-      openModalBtn.focus();
-    }
-  });
-
-  // Accessibility helper: hide from screen readers for elements used only for visual styling
-  const style = document.createElement('style');
-  style.textContent = `.sr-only { 
-    position: absolute; 
-    width: 1px; 
-    height: 1px; 
-    padding: 0; 
-    margin: -1px; 
-    overflow: hidden; 
-    clip: rect(0, 0, 0, 0); 
-    border: 0; 
-  }`;
-  document.head.appendChild(style);
 </script>
 </body>
 </html>
+
 
