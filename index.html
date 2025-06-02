@@ -1,642 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>GradWise Finance - Student Financial Helper</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #e0f0ff 0%, #f9fafc 100%);
-    margin: 0;
-    padding: 0;
-    color: #2e3a59;
-    transition: background 0.5s ease, color 0.5s ease;
-  }
-  header {
-    background: linear-gradient(90deg, #6a91f8, #a3b7ff);
-    color: white;
-    padding: 2.4rem 1rem;
-    text-align: center;
-    box-shadow: 0 6px 20px rgba(105, 120, 255, 0.25);
-    position: relative;
-    font-weight: 600;
-  }
-  header h1 {
-    margin: 0;
-    font-size: 2.6rem;
-    letter-spacing: 1px;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.15);
-  }
-  header p {
-    margin-top: 0.45rem;
-    font-size: 1.25rem;
-    font-weight: 400;
-    opacity: 0.85;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GradWise Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
 
-  /* Dark mode toggle switch */
-  .dark-mode-toggle {
-    position: absolute;
-    top: 1.4rem;
-    right: 1.6rem;
-    display: flex;
-    align-items: center;
-    gap: 0.6em;
-    cursor: pointer;
-    user-select: none;
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: white;
-  }
-  .dark-mode-toggle input[type="checkbox"] {
-    height: 0;
-    width: 0;
-    visibility: hidden;
-  }
-  .toggle-switch {
-    width: 48px;
-    height: 26px;
-    background: #c7d0ff;
-    border-radius: 30px;
-    position: relative;
-    transition: background-color 0.35s ease;
-    box-shadow: inset 0 0 6px rgba(0,0,0,0.12);
-  }
-  .toggle-switch::after {
-    content: '';
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 20px;
-    height: 20px;
-    background: white;
-    border-radius: 50%;
-    transition: 0.35s ease;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-  }
-  input[type="checkbox"]:checked + .toggle-switch {
-    background: #5b7ffa;
-  }
-  input[type="checkbox"]:checked + .toggle-switch::after {
-    left: calc(100% - 23px);
-  }
+    h2 {
+      text-align: center;
+    }
 
-  nav {
-    background: white;
-    display: flex;
-    justify-content: center;
-    box-shadow: 0 4px 18px rgba(70, 85, 190, 0.15);
-    transition: background 0.5s ease;
-    border-radius: 0 0 16px 16px;
-    font-weight: 600;
-  }
-  nav button {
-    background: none;
-    border: none;
-    padding: 1.3rem 3rem;
-    font-weight: 700;
-    font-size: 1.15rem;
-    cursor: pointer;
-    color: #7186d9;
-    border-bottom: 4px solid transparent;
-    border-radius: 10px 10px 0 0;
-    transition: all 0.4s ease;
-    letter-spacing: 0.04em;
-    font-family: 'Poppins', sans-serif;
-  }
-  nav button:hover,
-  nav button.active {
-    background: #e5eaff;
-    color: #3245bb;
-    border-bottom: 4px solid #3245bb;
-    box-shadow: 0 6px 14px rgba(78, 95, 220, 0.35);
-  }
+    #login {
+      max-width: 400px;
+      margin: 50px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
 
-  main {
-    max-width: 920px;
-    margin: 3rem auto 4rem;
-    background: white;
-    padding: 3.5rem 4rem;
-    box-shadow: 0 22px 56px rgba(65, 85, 255, 0.12);
-    border-radius: 18px;
-    transition: background 0.5s ease, color 0.5s ease;
-  }
-  section {
-    display: none;
-    animation: fadeInUp 0.45s ease forwards;
-    outline: none;
-  }
-  section.active {
-    display: block;
-  }
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(18px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+    label {
+      display: block;
+      margin-top: 15px;
+    }
 
-  h2 {
-    color: #3245bb;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    font-size: 2rem;
-    letter-spacing: 0.03em;
-  }
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      box-sizing: border-box;
+    }
 
-  label {
-    display: block;
-    margin: 18px 0 8px 0;
-    font-weight: 600;
-    color: #5e6a8e;
-    font-size: 1rem;
-  }
-  input[type=number], input[type=text], input.search-box {
-    width: 100%;
-    padding: 16px 20px;
-    font-size: 1.1rem;
-    border-radius: 12px;
-    border: 1.7px solid #b4c2ff;
-    margin-bottom: 1.9rem;
-    background: #f8faff;
-    color: #37415a;
-    font-weight: 500;
-    transition: border-color 0.35s ease, background 0.35s ease, color 0.35s ease;
-    box-shadow: inset 0 2px 6px rgba(100,110,220,0.12);
-  }
-  input:focus {
-    border-color: #3245bb;
-    outline: none;
-    background: #eef3ff;
-    color: #2c3660;
-    box-shadow: 0 0 10px 1.5px rgba(50, 69, 187, 0.3);
-  }
+    .calc-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      margin-top: 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
+    }
 
-  button.calc-btn {
-    background: linear-gradient(90deg, #566fe6, #3a4fcb);
-    border: none;
-    color: white;
-    padding: 18px 32px;
-    font-weight: 700;
-    font-size: 1.15rem;
-    border-radius: 18px;
-    cursor: pointer;
-    margin-top: 1.7rem;
-    box-shadow: 0 7px 18px rgba(60, 77, 216, 0.38);
-    transition: background 0.35s ease;
-    letter-spacing: 0.04em;
-    user-select: none;
-  }
-  button.calc-btn:hover {
-    background: linear-gradient(90deg, #455bcb, #2b3da7);
-    box-shadow: 0 9px 22px rgba(45, 62, 172, 0.55);
-  }
+    .calc-btn:hover {
+      background-color: #45a049;
+    }
 
-  .result {
-    margin-top: 2rem;
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #27386e;
-    background: #dbe4ff;
-    padding: 1.5rem 1.8rem;
-    border-left: 6px solid #3245bb;
-    border-radius: 10px;
-    transition: background 0.5s ease, color 0.5s ease;
-    user-select: text;
-  }
-  .warning {
-    color: #d94c4c;
-    font-weight: 700;
-  }
+    .result {
+      text-align: center;
+      margin-top: 20px;
+      color: green;
+      font-weight: bold;
+    }
 
-  ul.aid-list {
-    list-style: none;
-    padding-left: 0;
-    max-height: 340px;
-    overflow-y: auto;
-    border: 2px solid #b5c0ff;
-    border-radius: 14px;
-    background: #f9fbff;
-    box-shadow: inset 0 0 14px rgba(62, 74, 196, 0.16);
-    transition: background 0.5s ease, color 0.5s ease;
-    font-weight: 500;
-  }
-  ul.aid-list li {
-    padding: 18px 24px;
-    border-bottom: 1.7px solid #e0e6ff;
-    font-size: 1.1rem;
-  }
-  ul.aid-list li:last-child {
-    border-bottom: none;
-  }
-  ul.aid-list li strong {
-    color: #3245bb;
-    display: block;
-    margin-bottom: 6px;
-    font-weight: 700;
-  }
+    .logout-btn {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px;
+      background-color: #d9534f;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
 
-  .search-box {
-    margin-top: 18px;
-    margin-bottom: 26px;
-    font-weight: 600;
-    font-size: 1.1rem;
-  }
-
-  .scholarship-links {
-    margin-top: 1.5rem;
-  }
-  .scholarship-links h3 {
-    color: #3245bb;
-    margin-bottom: 1rem;
-    font-weight: 700;
-    font-size: 1.2rem;
-  }
-  .scholarship-links button {
-    background: #5a74e8;
-    border: none;
-    color: white;
-    padding: 11px 22px;
-    margin: 6px 10px 6px 0;
-    font-weight: 700;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 1rem;
-    box-shadow: 0 4px 13px rgba(77, 92, 223, 0.45);
-    transition: background 0.3s ease;
-  }
-  .scholarship-links button:hover {
-    background: #344ec1;
-  }
-
-  /* Budget Planner Styles */
-  .budget-planner label {
-    margin-top: 1rem;
-  }
-  .budget-planner input[type=number] {
-    max-width: 320px;
-  }
-  .budget-results {
-    margin-top: 1.8rem;
-    font-weight: 600;
-    font-size: 1.2rem;
-    color: #35418f;
-    background: #e2e8ff;
-    padding: 1.6rem 2rem;
-    border-radius: 14px;
-    border-left: 6px solid #3245bb;
-  }
-
-  /* Debt Decoder Styles */
-  .debt-decoder label {
-    margin-top: 1rem;
-  }
-  .debt-decoder input[type=number] {
-    max-width: 320px;
-  }
-  .debt-results {
-    margin-top: 1.8rem;
-    font-weight: 600;
-    font-size: 1.22rem;
-    color: #28396c;
-    background: #d9e4ff;
-    padding: 1.7rem 2rem;
-    border-radius: 14px;
-    border-left: 6px solid #3245bb;
-  }
-
-  /* Loan Estimator Styles */
-  .loan-estimator label {
-    margin-top: 1rem;
-  }
-  .loan-estimator input[type=number] {
-    max-width: 320px;
-  }
-  .loan-result {
-    margin-top: 1.8rem;
-    font-weight: 700;
-    font-size: 1.25rem;
-    color: #35418f;
-    background: #e2e8ff;
-    padding: 1.6rem 2rem;
-    border-radius: 14px;
-    border-left: 6px solid #3245bb;
-  }
-
-  /* Scrollbar for lists */
-  ul.aid-list::-webkit-scrollbar {
-    width: 9px;
-  }
-  ul.aid-list::-webkit-scrollbar-track {
-    background: #f1f5ff;
-    border-radius: 10px;
-  }
-  ul.aid-list::-webkit-scrollbar-thumb {
-    background: #7d94ff;
-    border-radius: 10px;
-  }
-
-  /* Dark mode overrides */
-  body.dark {
-    background: #1a1c2e;
-    color: #cfd2f7;
-  }
-  body.dark header {
-    background: linear-gradient(90deg, #4c4f83, #3f4271);
-    box-shadow: 0 6px 18px rgba(30, 33, 71, 0.9);
-    color: #ced0fc;
-  }
-  body.dark nav {
-    background: #272b4d;
-    box-shadow: 0 4px 16px rgba(50, 55, 110, 0.7);
-  }
-  body.dark nav button {
-    color: #a3a9e0;
-  }
-  body.dark nav button:hover,
-  body.dark nav button.active {
-    background: #3b3f6c;
-    color: #dbe1ff;
-    border-bottom-color: #9aafff;
-    box-shadow: 0 6px 14px rgba(150, 160, 255, 0.4);
-  }
-  body.dark main {
-    background: #23264b;
-    color: #d0d2ff;
-    box-shadow: 0 22px 56px rgba(36, 40, 72, 0.65);
-  }
-  body.dark input[type=number],
-  body.dark input[type=text],
-  body.dark input.search-box {
-    background: #2d3160;
-    border: 1.8px solid #5562e0;
-    color: #b9bbf6;
-    box-shadow: inset 0 2px 6px rgba(90, 95, 210, 0.35);
-  }
-  body.dark input:focus {
-    background: #3c40a3;
-    color: #e0e2ff;
-    border-color: #7e8bff;
-    box-shadow: 0 0 10px 1.8px #7e8bff;
-  }
-  body.dark button.calc-btn {
-    background: linear-gradient(90deg, #7889f9, #6475e0);
-    box-shadow: 0 7px 20px rgba(110, 125, 230, 0.5);
-  }
-  body.dark button.calc-btn:hover {
-    background: linear-gradient(90deg, #5a6df7, #4558d3);
-    box-shadow: 0 9px 22px rgba(75, 85, 230, 0.7);
-  }
-  body.dark .result,
-  body.dark .budget-results,
-  body.dark .debt-results,
-  body.dark .loan-result {
-    background: #373a72;
-    color: #d0d2ff;
-    border-left-color: #8a99ff;
-  }
-  body.dark ul.aid-list {
-    background: #282c59;
-    border-color: #545e9f;
-    box-shadow: inset 0 0 14px rgba(120, 125, 215, 0.3);
-  }
-  body.dark ul.aid-list li {
-    border-bottom-color: #3e417c;
-  }
-  body.dark ul.aid-list li strong {
-    color: #a4abff;
-  }
-  body.dark .scholarship-links button {
-    background: #5062c5;
-    box-shadow: 0 4px 14px rgba(70, 80, 190, 0.7);
-  }
-  body.dark .scholarship-links button:hover {
-    background: #3948a7;
-  }
-</style>
+    .logout-btn:hover {
+      background-color: #c9302c;
+    }
+  </style>
 </head>
 <body>
-<header>
-  <h1>GradWise Finance</h1>
-  <p>Your Student Financial Helper</p>
-  <label class="dark-mode-toggle" for="darkToggle">
-    Dark Mode
-    <input type="checkbox" id="darkToggle" />
-    <span class="toggle-switch"></span>
-  </label>
-</header>
+  <section id="login">
+    <h2>Login to GradWise</h2>
 
-<nav>
-  <button class="tab-button active" data-target="financial-aid">Financial Aid Search</button>
-  <button class="tab-button" data-target="loan-estimator">Loan Estimator</button>
-  <button class="tab-button" data-target="budget-planner">Budget Planner</button>
-  <button class="tab-button" data-target="debt-decoder">Debt Decoder</button>
-</nav>
+    <label for="username">Username</label>
+    <input type="text" id="username" placeholder="Enter your username" required />
 
-<main>
-  <!-- Financial Aid Search (mock data) -->
-  <section id="financial-aid" class="financial-aid active" tabindex="0">
-    <h2>Financial Aid Search</h2>
-    <input type="text" placeholder="Search for scholarships or aid programs..." class="search-box" />
-    <ul class="aid-list">
-      <li><strong>Academic Excellence Scholarship</strong> — Up to $5,000 for GPA above 3.8</li>
-      <li><strong>Community Service Grant</strong> — $1,200 for volunteering 100+ hours</li>
-      <li><strong>STEM Innovators Award</strong> — $3,500 for students in science/tech majors</li>
-      <li><strong>First-Gen College Support</strong> — $2,000 for first-generation college students</li>
-      <li><strong>Artistic Talent Scholarship</strong> — $2,500 for visual and performing arts students</li>
-      <li><strong>Need-Based Assistance Fund</strong> — Varies based on financial need</li>
-      <li><strong>Military Family Scholarship</strong> — $4,000 for dependents of military personnel</li>
-      <li><strong>Environmental Stewardship Award</strong> — $1,500 for projects focused on sustainability</li>
-      <li><strong>Leadership in Education Grant</strong> — $3,000 for student leaders</li>
-      <li><strong>Tech Start-Up Scholarship</strong> — $2,800 for entrepreneurship in tech</li>
-    </ul>
-    <div class="scholarship-links">
-      <h3>Helpful Scholarship Sites</h3>
-      <button onclick="window.open('https://www.fastweb.com', '_blank')">Fastweb</button>
-      <button onclick="window.open('https://www.scholarships.com', '_blank')">Scholarships.com</button>
-      <button onclick="window.open('https://www.collegeboard.org', '_blank')">College Board</button>
-    </div>
+    <label for="email">Email</label>
+    <input type="text" id="email" placeholder="Enter your email" required />
+
+    <label for="password">Password</label>
+    <input type="password" id="password" placeholder="Enter your password" required />
+
+    <button class="calc-btn" onclick="loginUser()">Login</button>
+
+    <p id="login-message" class="result" style="display:none;"></p>
+    <button id="logout-btn" class="logout-btn" style="display:none;" onclick="logoutUser()">Logout</button>
   </section>
 
-  <!-- Loan Estimator -->
-  <section id="loan-estimator" class="loan-estimator" tabindex="0">
-    <h2>Loan Estimator</h2>
-    <label for="loanAmount">Loan Amount ($):</label>
-    <input type="number" id="loanAmount" min="100" step="100" placeholder="e.g. 10000" />
-    <label for="interestRate">Interest Rate (% annual):</label>
-    <input type="number" id="interestRate" min="0" max="20" step="0.01" placeholder="e.g. 5.5" />
-    <label for="loanTerm">Loan Term (years):</label>
-    <input type="number" id="loanTerm" min="1" max="30" step="1" placeholder="e.g. 10" />
-    <button class="calc-btn" id="estimateLoanBtn">Estimate</button>
-    <div class="loan-result" aria-live="polite" role="region"></div>
-  </section>
+  <script>
+    function loginUser() {
+      const username = document.getElementById("username").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
 
-  <!-- Budget Planner -->
-  <section id="budget-planner" class="budget-planner" tabindex="0">
-    <h2>Budget Planner</h2>
-    <label for="income">Monthly Income ($):</label>
-    <input type="number" id="income" min="0" step="50" placeholder="e.g. 2000" />
-    <label for="rent">Rent ($):</label>
-    <input type="number" id="rent" min="0" step="50" placeholder="e.g. 600" />
-    <label for="food">Food ($):</label>
-    <input type="number" id="food" min="0" step="20" placeholder="e.g. 300" />
-    <label for="transport">Transport ($):</label>
-    <input type="number" id="transport" min="0" step="20" placeholder="e.g. 150" />
-    <label for="otherExpenses">Other Expenses ($):</label>
-    <input type="number" id="otherExpenses" min="0" step="20" placeholder="e.g. 200" />
-    <button class="calc-btn" id="planBudgetBtn">Calculate Budget</button>
-    <div class="budget-results" aria-live="polite" role="region"></div>
-  </section>
+      if (!username || !email || !password) {
+        alert("Please fill in all fields.");
+        return;
+      }
 
-  <!-- Debt Decoder -->
-  <section id="debt-decoder" class="debt-decoder" tabindex="0">
-    <h2>Debt Decoder</h2>
-    <label for="debtAmount">Total Debt ($):</label>
-    <input type="number" id="debtAmount" min="0" step="100" placeholder="e.g. 15000" />
-    <label for="monthlyPayment">Monthly Payment ($):</label>
-    <input type="number" id="monthlyPayment" min="0" step="50" placeholder="e.g. 300" />
-    <label for="annualInterest">Annual Interest Rate (%):</label>
-    <input type="number" id="annualInterest" min="0" max="30" step="0.01" placeholder="e.g. 6.5" />
-    <button class="calc-btn" id="decodeDebtBtn">Calculate</button>
-    <div class="debt-results" aria-live="polite" role="region"></div>
-  </section>
-</main>
+      const user = {
+        username,
+        email,
+        password  // Note: This is not secure for real apps
+      };
 
-<script>
-  // Tab navigation logic
-  const tabs = document.querySelectorAll('nav button.tab-button');
-  const sections = document.querySelectorAll('main section');
+      // Save user to localStorage
+      localStorage.setItem("gradwiseUser", JSON.stringify(user));
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const target = tab.dataset.target;
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      sections.forEach(section => {
-        if (section.id === target) {
-          section.classList.add('active');
-          section.focus();
-        } else {
-          section.classList.remove('active');
-        }
-      });
-    });
-  });
-
-  // Dark mode toggle
-  const darkToggle = document.getElementById('darkToggle');
-  darkToggle.addEventListener('change', () => {
-    document.body.classList.toggle('dark', darkToggle.checked);
-  });
-
-  // Loan Estimator calculation
-  const loanAmountInput = document.getElementById('loanAmount');
-  const interestRateInput = document.getElementById('interestRate');
-  const loanTermInput = document.getElementById('loanTerm');
-  const estimateLoanBtn = document.getElementById('estimateLoanBtn');
-  const loanResult = document.querySelector('.loan-result');
-
-  estimateLoanBtn.addEventListener('click', () => {
-    const P = parseFloat(loanAmountInput.value);
-    const r = parseFloat(interestRateInput.value) / 100 / 12;
-    const n = parseInt(loanTermInput.value) * 12;
-
-    if (!P || !r || !n || P <= 0 || r < 0 || n <= 0) {
-      loanResult.textContent = 'Please enter valid positive values for all fields.';
-      loanResult.classList.add('warning');
-      return;
-    }
-    loanResult.classList.remove('warning');
-
-    // Monthly payment formula: M = P * r * (1+r)^n / ((1+r)^n - 1)
-    let monthlyPayment;
-    if (r === 0) {
-      monthlyPayment = P / n;
-    } else {
-      monthlyPayment = P * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
+      showWelcomeMessage(user.username);
     }
 
-    loanResult.textContent = `Estimated Monthly Payment: $${monthlyPayment.toFixed(2)}`;
-  });
+    function showWelcomeMessage(username) {
+      const message = document.getElementById("login-message");
+      const logoutBtn = document.getElementById("logout-btn");
 
-  // Budget Planner calculation
-  const incomeInput = document.getElementById('income');
-  const rentInput = document.getElementById('rent');
-  const foodInput = document.getElementById('food');
-  const transportInput = document.getElementById('transport');
-  const otherInput = document.getElementById('otherExpenses');
-  const planBudgetBtn = document.getElementById('planBudgetBtn');
-  const budgetResults = document.querySelector('.budget-results');
+      message.textContent = `Welcome, ${username}! You are now logged in.`;
+      message.style.display = "block";
+      logoutBtn.style.display = "block";
 
-  planBudgetBtn.addEventListener('click', () => {
-    const income = parseFloat(incomeInput.value);
-    const rent = parseFloat(rentInput.value);
-    const food = parseFloat(foodInput.value);
-    const transport = parseFloat(transportInput.value);
-    const other = parseFloat(otherInput.value);
-
-    if ([income, rent, food, transport, other].some(x => isNaN(x) || x < 0)) {
-      budgetResults.textContent = 'Please enter valid non-negative numbers for all fields.';
-      budgetResults.classList.add('warning');
-      return;
-    }
-    budgetResults.classList.remove('warning');
-
-    const totalExpenses = rent + food + transport + other;
-    const savings = income - totalExpenses;
-
-    if (savings < 0) {
-      budgetResults.textContent = `Warning: Your expenses exceed your income by $${(-savings).toFixed(2)}. Consider reducing costs.`;
-      budgetResults.classList.add('warning');
-    } else {
-      budgetResults.textContent = `Your total expenses: $${totalExpenses.toFixed(2)}. Estimated monthly savings: $${savings.toFixed(2)}.`;
-      budgetResults.classList.remove('warning');
-    }
-  });
-
-  // Debt Decoder calculation
-  const debtAmountInput = document.getElementById('debtAmount');
-  const monthlyPaymentInput = document.getElementById('monthlyPayment');
-  const annualInterestInput = document.getElementById('annualInterest');
-  const decodeDebtBtn = document.getElementById('decodeDebtBtn');
-  const debtResults = document.querySelector('.debt-results');
-
-  decodeDebtBtn.addEventListener('click', () => {
-    const debt = parseFloat(debtAmountInput.value);
-    const payment = parseFloat(monthlyPaymentInput.value);
-    const annualRate = parseFloat(annualInterestInput.value);
-
-    if ([debt, payment, annualRate].some(x => isNaN(x) || x <= 0)) {
-      debtResults.textContent = 'Please enter valid positive numbers for all fields.';
-      debtResults.classList.add('warning');
-      return;
-    }
-    debtResults.classList.remove('warning');
-
-    const monthlyRate = annualRate / 100 / 12;
-
-    // Calculate months to pay off the debt using formula:
-    // n = -log(1 - (P*r/D)) / log(1+r)
-    // where P = debt, r = monthly rate, D = monthly payment
-    if (payment <= debt * monthlyRate) {
-      debtResults.textContent = 'Monthly payment is too low to cover the interest. Debt will never be paid off.';
-      debtResults.classList.add('warning');
-      return;
+      // Optional: Hide form fields after login
+      document.getElementById("username").style.display = "none";
+      document.getElementById("email").style.display = "none";
+      document.getElementById("password").style.display = "none";
+      document.querySelector(".calc-btn").style.display = "none";
     }
 
-    const numerator = Math.log(1 - (debt * monthlyRate / payment)) * -1;
-    const denominator = Math.log(1 + monthlyRate);
-    const months = numerator / denominator;
+    function logoutUser() {
+      localStorage.removeItem("gradwiseUser");
+      location.reload();
+    }
 
-    const years = Math.floor(months / 12);
-    const extraMonths = Math.ceil(months % 12);
-
-    debtResults.textContent = `Estimated time to pay off debt: ${years} year(s) and ${extraMonths} month(s).`;
-  });
-</script>
-
+    // Check for saved login on page load
+    window.onload = function () {
+      const savedUser = JSON.parse(localStorage.getItem("gradwiseUser"));
+      if (savedUser) {
+        showWelcomeMessage(savedUser.username);
+      }
+    };
+  </script>
 </body>
 </html>
