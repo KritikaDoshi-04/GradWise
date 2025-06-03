@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Net Cost Calculator</title>
+  <title>Financial Aid Finder</title>
   <style>
     body { font-family: Arial, sans-serif; margin: 20px; max-width: 900px; }
     nav { margin-bottom: 20px; }
@@ -35,17 +35,21 @@
     <a href="starter-salary-planner.html">Starter Salary Planner</a>
     <a href="credit-score-coach.html">Credit Score Coach</a>
   </nav>
-  <h1>🏦 Net Cost Calculator</h1>
+  <h1>💸 Financial Aid Finder</h1>
   <form>
-    <label for="efc">Expected Family Contribution (EFC)</label>
-    <input type="number" id="efc" name="efc" placeholder="Enter EFC" />
-    <label for="financialAidOffers">Financial Aid Offers</label>
-    <input type="number" id="financialAidOffers" name="financialAidOffers" placeholder="Enter total aid amount" />
-    <label for="housingCosts">Housing Costs</label>
-    <input type="number" id="housingCosts" name="housingCosts" placeholder="Enter housing cost" />
-    <label for="booksCosts">Books & Supplies</label>
-    <input type="number" id="booksCosts" name="booksCosts" placeholder="Enter books & supplies cost" />
-    <button type="submit">Calculate Net Cost</button>
+    <label for="gpa">GPA</label>
+    <input type="number" id="gpa" name="gpa" step="0.01" min="0" max="4" placeholder="e.g., 3.8" />
+    <label for="ethnicity">Ethnicity</label>
+    <input type="text" id="ethnicity" name="ethnicity" placeholder="e.g., Hispanic, Asian" />
+    <label for="income">Income Level</label>
+    <input type="number" id="income" name="income" placeholder="Annual income in USD" />
+    <label for="major">Intended Major</label>
+    <input type="text" id="major" name="major" placeholder="e.g., Computer Science" />
+    <label for="location">Location</label>
+    <input type="text" id="location" name="location" placeholder="City, State, or Country" />
+    <label for="extracurriculars">Extracurriculars</label>
+    <textarea id="extracurriculars" name="extracurriculars" rows="3" placeholder="List your extracurricular activities"></textarea>
+    <button type="submit">Find Scholarships</button>
   </form>
 </body>
 </html>
