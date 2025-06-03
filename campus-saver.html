@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CampusSaver</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; max-width: 900px; }
+    nav { margin-bottom: 20px; }
+    nav a { margin-right: 15px; text-decoration: none; color: #2980b9; font-weight: bold; }
+    nav a:hover { text-decoration: underline; }
+    label { display: block; margin: 10px 0 5px; font-weight: bold; }
+    input, select, textarea {
+      width: 100%; padding: 6px 10px; font-size: 1rem;
+      border: 1px solid #ccc; border-radius: 4px;
+    }
+    button {
+      margin-top: 15px; padding: 10px 20px; font-size: 1rem;
+      border: none; background-color: #2980b9; color: white;
+      cursor: pointer; border-radius: 4px;
+    }
+    button:hover { background-color: #1f618d; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="financial-aid-finder.html">Financial Aid Finder</a>
+    <a href="net-cost-calculator.html">Net Cost Calculator</a>
+    <a href="smart-loan-estimator.html">Smart Loan Estimator</a>
+    <a href="student-budget-builder.html">Student Budget Builder</a>
+    <a href="smartspend-analyzer.html">SmartSpend Analyzer</a>
+    <a href="campus-saver.html">CampusSaver</a>
+    <a href="aid-refund-tracker.html">Aid & Refund Tracker</a>
+    <a href="debt-decoder.html">Debt Decoder</a>
+    <a href="starter-salary-planner.html">Starter Salary Planner</a>
+    <a href="credit-score-coach.html">Credit Score Coach</a>
+  </nav>
+  <h1>💡 CampusSaver</h1>
+  <form>
+    <label for="campusLocation">Campus Location</label>
+    <input type="text" id="campusLocation" name="campusLocation" placeholder="Enter your campus location" />
+    <label for="discountType">Discount Type</label>
+    <input type="text" id="discountType" name="discountType" placeholder="Enter discount type" />
+    <label for="totalSavings">Total Savings</label>
+    <input type="number" id="totalSavings" name="totalSavings" placeholder="Enter your total savings" />
+    <button type="submit">Save More</button>
+  </form>
+</body>
+</html>
